@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class CreateBioTableViewController: UITableViewController, UIImagePickerControllerDelegate {
+class CreateBioTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //*********************************************************
     // MARK: - Properties
@@ -78,6 +78,37 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     }
     
     // alert buttons when tapped choosePhotoButtonTapped
+    @IBAction func chooseButtonPhotoTapped(_ sender: Any) {
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        
+        let alertController = UIAlertController(title: "Choose Image Source", message: nil, preferredStyle: .actionSheet)
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancel)
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let cameraAction = UIAlertAction(title: "Camera", style: .default) { (_) in
+                imagePicker.sourceType = .camera
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+            alertController.addAction(cameraAction)
+        }
+        
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            
+            let photoLigraryAction = UIAlertAction(title: "Photo Library", style: .default) { (_) in
+                imagePicker.sourceType = .photoLibrary
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+            
+            present(alertController, animated: true, completion: nil)
+        }
+        
+        // Image picking functionality - When a user want to pick image's they will recive an alert notification of the want to use the camera or not. OR select photos from the photo library.
+        
+    }
     
     
     
