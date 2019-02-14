@@ -15,7 +15,7 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     // MARK: - Properties
     //*********************************************************
     
-    var imageData = Image?
+    var imageData: Image?
     
     var bio: Bio? {
         
@@ -54,12 +54,31 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        updateView()
 
     }
     
     //*********************************************************
     // MARK: - UIImageView
     //*********************************************************
+    
+    // able to selet image
+    func updateView() {
+        
+        guard let image = imageData else { return }
+        if let imageData = image.imageData,
+            let images = UIImage(data: imageData) {
+            choosePhotoButton.setTitle("", for: .normal)
+            choosePhotoButton.setBackgroundImage(images, for: .normal)
+        } else {
+            choosePhotoButton.setTitle("Choose Image", for: .normal)
+            choosePhotoButton.setBackgroundImage(nil, for: .normal)
+        }
+    }
+    
+    // alert buttons when tapped choosePhotoButtonTapped
+    
     
     
 
