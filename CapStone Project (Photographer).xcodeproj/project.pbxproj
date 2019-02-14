@@ -17,6 +17,7 @@
 		F531D5A02211D84D00AB5D8D /* BioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F531D59F2211D84D00AB5D8D /* BioController.swift */; };
 		F531D5A22213325A00AB5D8D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F531D5A12213325A00AB5D8D /* GoogleService-Info.plist */; };
 		F58602262215BE0A007F7F3C /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58602252215BE0A007F7F3C /* Image.swift */; };
+		F586022A2215CC3B007F7F3C /* JeffControllerNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58602292215CC3B007F7F3C /* JeffControllerNew.swift */; };
 		F5FE67652208A3B100E42133 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FE67642208A3B100E42133 /* AppDelegate.swift */; };
 		F5FE676A2208A3B100E42133 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5FE67682208A3B100E42133 /* Main.storyboard */; };
 		F5FE676C2208A3B500E42133 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5FE676B2208A3B500E42133 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		F531D59F2211D84D00AB5D8D /* BioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioController.swift; sourceTree = "<group>"; };
 		F531D5A12213325A00AB5D8D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F58602252215BE0A007F7F3C /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		F58602292215CC3B007F7F3C /* JeffControllerNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JeffControllerNew.swift; sourceTree = "<group>"; };
 		F5FE67612208A3B100E42133 /* CapStone Project (Photographer).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CapStone Project (Photographer).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5FE67642208A3B100E42133 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5FE67692208A3B100E42133 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				F531D59B2211D2D000AB5D8D /* Stack.swift */,
 				F531D59D2211D48100AB5D8D /* Bio.swift */,
 				F58602252215BE0A007F7F3C /* Image.swift */,
+				F58602292215CC3B007F7F3C /* JeffControllerNew.swift */,
 				F5FE67762208A64300E42133 /* Model.xcdatamodeld */,
 			);
 			path = Model;
@@ -197,6 +200,7 @@
 				F50ADB18220C8AF3009B57F0 /* ListPhotographersTableViewController.swift in Sources */,
 				F531D59C2211D2D000AB5D8D /* Stack.swift in Sources */,
 				F50ADB16220C8ABD009B57F0 /* CreateBioTableViewController.swift in Sources */,
+				F586022A2215CC3B007F7F3C /* JeffControllerNew.swift in Sources */,
 				F5FE67782208A64300E42133 /* Model.xcdatamodeld in Sources */,
 				F531D59E2211D48100AB5D8D /* Bio.swift in Sources */,
 				F58602262215BE0A007F7F3C /* Image.swift in Sources */,
