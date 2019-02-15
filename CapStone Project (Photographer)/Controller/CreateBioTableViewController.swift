@@ -6,6 +6,7 @@
 //  Copyright © 2019 Dallin Smuin. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import CoreData
 
@@ -15,7 +16,7 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     // MARK: - Properties
     //*********************************************************
     
-    var imageData: Image?
+    var image: Image?
     
     var bio: Bio? {
         
@@ -60,13 +61,13 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     }
     
     //*********************************************************
-    // MARK: - UIImageView
+    // MARK: - UIImageView for picking photos from the library
     //*********************************************************
     
     // able to selet image
     func updateView() {
         
-        guard let image = imageData else { return }
+        guard let image = image else { return }
         if let imageData = image.imageData,
             let images = UIImage(data: imageData) {
             choosePhotoButton.setTitle("", for: .normal)
@@ -97,18 +98,31 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         }
         
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-            
-            let photoLigraryAction = UIAlertAction(title: "Photo Library", style: .default) { (_) in
+            let photoLibraryAction = UIAlertAction(title: "photo library", style: .default, handler: { (_) in
                 imagePicker.sourceType = .photoLibrary
                 self.present(imagePicker, animated: true, completion: nil)
-            }
+            })
+            alertController.addAction(photoLibraryAction)
+        } 
+        
             
             present(alertController, animated: true, completion: nil)
         }
         
         // Image picking functionality - When a user want to pick image's they will recive an alert notification of the want to use the camera or not. OR select photos from the photo library.
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            
+            if let selectedImage = info[.originalImage] as? UIImage {
+                imageView.image = selectedImage
+                image?.imageData = selectedImage.pngData()
+                dismiss(animated: true, completion: nil)
+            }
+        }
         
-    }
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            dismiss(animated: true, completion: nil)
+        }
+    
     
     
     
@@ -173,3 +187,4 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     */
 
 }
+

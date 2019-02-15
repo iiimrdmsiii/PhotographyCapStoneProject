@@ -10,7 +10,7 @@ import Foundation
 
 class Image {
     
-    let imageData: Data?
+    var imageData: Data?
     
     init(imageData: Data? = nil) {
         self.imageData = imageData
