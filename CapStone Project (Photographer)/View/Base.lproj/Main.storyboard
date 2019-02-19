@@ -92,31 +92,25 @@
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lfv-55-S5N">
                                             <rect key="frame" x="0.0" y="0.0" width="77" height="69.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="77" id="Fsl-Pq-6ol"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="firstName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xtp-aE-m9V">
-                                            <rect key="frame" x="85" y="24" width="109.5" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lastName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHn-QO-wom">
-                                            <rect key="frame" x="202.5" y="19" width="106.5" height="32"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHn-QO-wom">
+                                            <rect key="frame" x="85" y="19" width="274" height="32"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Xtp-aE-m9V" firstAttribute="leading" secondItem="lfv-55-S5N" secondAttribute="trailing" constant="8" id="8zN-2d-XYG"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="oHn-QO-wom" secondAttribute="trailing" id="DRI-z3-b1r"/>
                                         <constraint firstItem="lfv-55-S5N" firstAttribute="leading" secondItem="xKu-Yk-SUj" secondAttribute="leading" id="MF0-qu-eb0"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Xtp-aE-m9V" secondAttribute="bottom" constant="14" id="MWZ-vh-07T"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="oHn-QO-wom" secondAttribute="bottom" constant="8" id="P95-Nl-mu2"/>
                                         <constraint firstItem="oHn-QO-wom" firstAttribute="top" secondItem="xKu-Yk-SUj" secondAttribute="topMargin" constant="8" id="UnR-vg-Gao"/>
-                                        <constraint firstItem="oHn-QO-wom" firstAttribute="leading" secondItem="Xtp-aE-m9V" secondAttribute="trailing" constant="8" id="VOd-ku-iRp"/>
                                         <constraint firstItem="lfv-55-S5N" firstAttribute="top" secondItem="xKu-Yk-SUj" secondAttribute="top" id="byj-1H-FBj"/>
                                         <constraint firstAttribute="bottom" secondItem="lfv-55-S5N" secondAttribute="bottom" id="elF-yD-vUj"/>
-                                        <constraint firstItem="Xtp-aE-m9V" firstAttribute="top" secondItem="xKu-Yk-SUj" secondAttribute="topMargin" constant="13" id="rdD-ae-ccp"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="oHn-QO-wom" secondAttribute="trailing" constant="50" id="vLr-Dg-XAy"/>
+                                        <constraint firstItem="oHn-QO-wom" firstAttribute="leading" secondItem="lfv-55-S5N" secondAttribute="trailing" constant="8" symbolic="YES" id="iZs-pb-TYZ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -131,6 +125,9 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Home" id="fgh-x3-NXR"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="nameLabel" destination="oHn-QO-wom" id="aiy-ah-SCF"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Srr-5p-r29" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -839,7 +836,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Lks-Um-nXm"/>
-        <segue reference="Fdh-gO-AVQ"/>
+        <segue reference="Bhn-zz-WYd"/>
         <segue reference="bp3-q8-nKV"/>
     </inferredMetricsTieBreakers>
 </document>
