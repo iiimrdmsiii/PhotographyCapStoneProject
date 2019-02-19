@@ -23,9 +23,18 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         didSet {
             guard let bio = bio else { return }
             
+            nameTextField.text = bio.name
+            emailTextField.text = bio.email
+            passwordTextField.text = bio.password
+            repeatPasswordTextField.text = bio.password
+            phoneNumber.text = "\(bio.number)"
+            emailTextField.text = bio.email
+            currentStateTextField.text = bio.currentState
+            instagramTextField.text = bio.instagram
+            websiteTextField.text = bio.webSite
+            aboutYouTextView.text = bio.aboutYou
             
         }
-        
     }
     
     
@@ -58,6 +67,47 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         
         updateView()
 
+    }
+    
+    //*********************************************************
+    // MARK: - Register Button Action
+    //*********************************************************
+    
+    @IBAction func registerButtonTapped(_ sender: Any) {
+        // update
+        guard let name = nameTextField.text,
+        let email = emailTextField.text,
+        let password = passwordTextField.text,
+        let repeatPassword = repeatPasswordTextField.text,
+        let phone = phoneNumber.text,
+            let phoneNumber = Int16(phone),
+        let emailContact = emailContactTextField.text,
+        let currentState = currentStateTextField.text,
+        let instagram = instagramTextField.text,
+        let webSite = websiteTextField.text,
+        let aboutYou = aboutYouTextView.text else { return }
+        
+        if let bio = bio {
+            
+            bio.name = name
+            bio.email = email
+            bio.password = password
+            bio.password = repeatPassword
+            bio.number = phoneNumber
+            bio.email = emailContact
+            bio.currentState = currentState
+            bio.instagram = instagram
+            bio.webSite = webSite
+            bio.aboutYou = aboutYou
+    
+        } else {
+            // create
+            BioController.shareController.createBio(name: name, number: phoneNumber, email: email, currentState: currentState, instagram: instagram, webSite: webSite, aboutYou: aboutYou, password: password)
+            
+        }
+        
+        self.navigationController?.popViewController(animated: true)
+        
     }
     
     //*********************************************************
@@ -122,69 +172,10 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             dismiss(animated: true, completion: nil)
         }
-    
-    
-    
-    
 
     //*********************************************************
     // MARK: - Table view data source
     //*********************************************************
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

@@ -11,7 +11,7 @@ import CoreData
 
 extension Bio {
     
-    convenience init?(name: String, number: Int16, email: String, currentState: String, instagram: String, webSite: String, aboutYou: String, context: NSManagedObjectContext = Stack.context) {
+    convenience init?(name: String, number: Int16, email: String, currentState: String, instagram: String, webSite: String, aboutYou: String, password: String, context: NSManagedObjectContext = Stack.context) {
         
         self.init(context: context)
         self.name = name
@@ -21,7 +21,9 @@ extension Bio {
         self.instagram = instagram
         self.webSite = webSite
         self.aboutYou = aboutYou
+        self.password = password
         self.dateOfBirth = Date()
+        
     }
     
 }

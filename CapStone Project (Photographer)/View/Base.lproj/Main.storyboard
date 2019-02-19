@@ -713,6 +713,7 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <connections>
+                                                        <action selector="registerButtonTapped:" destination="iox-88-smh" eventType="touchUpInside" id="fAi-ro-X9e"/>
                                                         <segue destination="XLW-oM-g00" kind="presentation" id="Lks-Um-nXm"/>
                                                     </connections>
                                                 </button>
