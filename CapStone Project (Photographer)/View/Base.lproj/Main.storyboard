@@ -407,7 +407,7 @@
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t7h-7a-RvF">
-                                                    <rect key="frame" x="90" y="10" width="195" height="139"/>
+                                                    <rect key="frame" x="110" y="10" width="155" height="119"/>
                                                 </imageView>
                                                 <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First and Last Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="86C-48-urd">
                                                     <rect key="frame" x="20" y="159" width="335" height="30"/>
@@ -469,13 +469,20 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTJ-rN-qik">
+                                                    <rect key="frame" x="16" y="130" width="50" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="86C-48-urd" secondAttribute="trailing" constant="20" id="4iv-IE-RXv"/>
                                                 <constraint firstAttribute="trailing" secondItem="98R-B9-7RL" secondAttribute="trailing" constant="20" id="4yC-eE-iG6"/>
                                                 <constraint firstItem="86C-48-urd" firstAttribute="top" secondItem="BiA-Zg-IAm" secondAttribute="bottom" constant="10" id="4za-qj-dCe"/>
                                                 <constraint firstItem="h2c-XX-NLC" firstAttribute="leading" secondItem="bG5-Lc-FjP" secondAttribute="leadingMargin" id="Ady-ZJ-ZtY"/>
-                                                <constraint firstItem="86C-48-urd" firstAttribute="top" secondItem="t7h-7a-RvF" secondAttribute="bottom" constant="10" id="C0A-DN-fce"/>
+                                                <constraint firstItem="86C-48-urd" firstAttribute="top" secondItem="t7h-7a-RvF" secondAttribute="bottom" constant="30" id="C0A-DN-fce"/>
+                                                <constraint firstItem="86C-48-urd" firstAttribute="top" secondItem="dTJ-rN-qik" secondAttribute="bottom" constant="8" id="CuO-v1-iF9"/>
                                                 <constraint firstItem="t7h-7a-RvF" firstAttribute="top" secondItem="bG5-Lc-FjP" secondAttribute="top" constant="10" id="G3F-O8-Gza"/>
                                                 <constraint firstItem="OAy-UX-eWB" firstAttribute="top" secondItem="Wgr-pD-FBt" secondAttribute="bottom" constant="5" id="GBL-vm-noF"/>
                                                 <constraint firstItem="Wgr-pD-FBt" firstAttribute="top" secondItem="XNq-lW-c9h" secondAttribute="bottom" constant="4" id="Kt7-h8-IEG"/>
@@ -485,16 +492,17 @@
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="h2c-XX-NLC" secondAttribute="trailing" constant="20" symbolic="YES" id="Qxy-Gx-BIT"/>
                                                 <constraint firstItem="BiA-Zg-IAm" firstAttribute="leading" secondItem="bG5-Lc-FjP" secondAttribute="leadingMargin" constant="80" id="UGz-gm-Ndi"/>
                                                 <constraint firstItem="98R-B9-7RL" firstAttribute="top" secondItem="h2c-XX-NLC" secondAttribute="bottom" constant="2" id="Vjb-5u-TcZ"/>
-                                                <constraint firstAttribute="trailing" secondItem="t7h-7a-RvF" secondAttribute="trailing" constant="90" id="Yze-jK-zSy"/>
+                                                <constraint firstAttribute="trailing" secondItem="t7h-7a-RvF" secondAttribute="trailing" constant="110" id="Yze-jK-zSy"/>
                                                 <constraint firstItem="Wgr-pD-FBt" firstAttribute="leading" secondItem="bG5-Lc-FjP" secondAttribute="leadingMargin" id="aJz-E5-v4e"/>
                                                 <constraint firstItem="OAy-UX-eWB" firstAttribute="leading" secondItem="bG5-Lc-FjP" secondAttribute="leading" constant="20" id="dwH-So-aGU"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Wgr-pD-FBt" secondAttribute="trailing" constant="20" symbolic="YES" id="eh0-4q-knt"/>
                                                 <constraint firstItem="86C-48-urd" firstAttribute="leading" secondItem="bG5-Lc-FjP" secondAttribute="leading" constant="20" id="guR-ab-eq1"/>
                                                 <constraint firstItem="BiA-Zg-IAm" firstAttribute="top" secondItem="bG5-Lc-FjP" secondAttribute="topMargin" constant="10" id="h3R-v0-RxP"/>
                                                 <constraint firstItem="h2c-XX-NLC" firstAttribute="top" secondItem="86C-48-urd" secondAttribute="bottom" constant="16" id="hCb-8O-wzL"/>
+                                                <constraint firstItem="dTJ-rN-qik" firstAttribute="leading" secondItem="bG5-Lc-FjP" secondAttribute="leadingMargin" id="iNg-TQ-40E"/>
                                                 <constraint firstItem="cA5-3t-mre" firstAttribute="leading" secondItem="bG5-Lc-FjP" secondAttribute="leadingMargin" id="inQ-ZP-64T"/>
                                                 <constraint firstAttribute="trailing" secondItem="OAy-UX-eWB" secondAttribute="trailing" constant="20" id="lCX-WN-IWR"/>
-                                                <constraint firstItem="t7h-7a-RvF" firstAttribute="leading" secondItem="bG5-Lc-FjP" secondAttribute="leading" constant="90" id="lRd-2w-nEg"/>
+                                                <constraint firstItem="t7h-7a-RvF" firstAttribute="leading" secondItem="bG5-Lc-FjP" secondAttribute="leading" constant="110" id="lRd-2w-nEg"/>
                                                 <constraint firstAttribute="trailing" secondItem="XNq-lW-c9h" secondAttribute="trailing" constant="20" id="oY5-MU-MQE"/>
                                                 <constraint firstItem="98R-B9-7RL" firstAttribute="leading" secondItem="bG5-Lc-FjP" secondAttribute="leading" constant="20" id="sda-zv-oyl"/>
                                                 <constraint firstItem="XNq-lW-c9h" firstAttribute="top" secondItem="cA5-3t-mre" secondAttribute="bottom" constant="1" id="tWY-HL-19g"/>
@@ -708,7 +716,7 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="registerButtonTapped:" destination="iox-88-smh" eventType="touchUpInside" id="fAi-ro-X9e"/>
-                                                        <segue destination="XLW-oM-g00" kind="presentation" id="Lks-Um-nXm"/>
+                                                        <segue destination="XLW-oM-g00" kind="presentation" identifier="cellSegue" id="Lks-Um-nXm"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
