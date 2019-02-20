@@ -83,7 +83,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bioCell" rowHeight="70" id="WjU-ze-Go5">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bioCell" rowHeight="70" id="WjU-ze-Go5" customClass="CellLIstPhotographersTableViewCell" customModule="CapStone_Project__Photographer_" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WjU-ze-Go5" id="xKu-Yk-SUj">
@@ -125,9 +125,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Home" id="fgh-x3-NXR"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="nameLabel" destination="oHn-QO-wom" id="aiy-ah-SCF"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Srr-5p-r29" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

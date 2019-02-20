@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F5032E0E221C756500C34915 /* CellLIstPhotographersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5032E0D221C756500C34915 /* CellLIstPhotographersTableViewCell.swift */; };
 		F509BB89220E1F7D008D5F46 /* BioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F509BB88220E1F7D008D5F46 /* BioViewController.swift */; };
 		F50ADB122209F6F6009B57F0 /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50ADB112209F6F6009B57F0 /* WelcomeScreenViewController.swift */; };
 		F50ADB14220C8A6D009B57F0 /* PhotographySignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50ADB13220C8A6D009B57F0 /* PhotographySignInViewController.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F5032E0D221C756500C34915 /* CellLIstPhotographersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellLIstPhotographersTableViewCell.swift; sourceTree = "<group>"; };
 		F509BB88220E1F7D008D5F46 /* BioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioViewController.swift; sourceTree = "<group>"; };
 		F50ADB112209F6F6009B57F0 /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
 		F50ADB13220C8A6D009B57F0 /* PhotographySignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotographySignInViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				F50ADB13220C8A6D009B57F0 /* PhotographySignInViewController.swift */,
 				F50ADB15220C8ABD009B57F0 /* CreateBioTableViewController.swift */,
 				F50ADB17220C8AF3009B57F0 /* ListPhotographersTableViewController.swift */,
+				F5032E0D221C756500C34915 /* CellLIstPhotographersTableViewCell.swift */,
 				F509BB88220E1F7D008D5F46 /* BioViewController.swift */,
 				F531D59F2211D84D00AB5D8D /* BioController.swift */,
 			);
@@ -190,6 +193,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5032E0E221C756500C34915 /* CellLIstPhotographersTableViewCell.swift in Sources */,
 				F509BB89220E1F7D008D5F46 /* BioViewController.swift in Sources */,
 				F50ADB14220C8A6D009B57F0 /* PhotographySignInViewController.swift in Sources */,
 				F531D5A02211D84D00AB5D8D /* BioController.swift in Sources */,

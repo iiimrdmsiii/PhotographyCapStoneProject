@@ -14,13 +14,7 @@ class ListPhotographersTableViewController: UITableViewController {
     // MARK: - Properties
     //*********************************************************
     
-    
-    
-    //*********************************************************
-    // MARK: - Outlets
-    //*********************************************************
-    
-    @IBOutlet weak var nameLabel: UILabel!
+
     
     //*********************************************************
     // MARK: - Override Methods
@@ -55,7 +49,7 @@ class ListPhotographersTableViewController: UITableViewController {
        // get the Bio that is associated with the cell
         let bio = BioController.shareController.bios[indexPath.row]
         
-        nameLabel.text = bio.name
+        cell.textLabel?.text = bio.name
 
         return cell
     }
