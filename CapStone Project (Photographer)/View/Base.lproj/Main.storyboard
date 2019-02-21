@@ -610,6 +610,9 @@
                                                     <date key="date" timeIntervalSinceReferenceDate="571074892.72068">
                                                         <!--2019-02-05 15:54:52 +0000-->
                                                     </date>
+                                                    <connections>
+                                                        <action selector="datePickerChanged:" destination="iox-88-smh" eventType="primaryActionTriggered" id="PhM-lk-Lgx"/>
+                                                    </connections>
                                                 </datePicker>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DOB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4M-ik-h1Q">
                                                     <rect key="frame" x="16" y="11" width="36" height="21"/>

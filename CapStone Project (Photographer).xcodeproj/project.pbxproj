@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F5032E0E221C756500C34915 /* CellLIstPhotographersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5032E0D221C756500C34915 /* CellLIstPhotographersTableViewCell.swift */; };
+		F5032E10221F05AE00C34915 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5032E0F221F05AE00C34915 /* DateFormatter.swift */; };
 		F509BB89220E1F7D008D5F46 /* BioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F509BB88220E1F7D008D5F46 /* BioViewController.swift */; };
 		F50ADB122209F6F6009B57F0 /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50ADB112209F6F6009B57F0 /* WelcomeScreenViewController.swift */; };
 		F50ADB14220C8A6D009B57F0 /* PhotographySignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50ADB13220C8A6D009B57F0 /* PhotographySignInViewController.swift */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		F5032E0D221C756500C34915 /* CellLIstPhotographersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellLIstPhotographersTableViewCell.swift; sourceTree = "<group>"; };
+		F5032E0F221F05AE00C34915 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		F509BB88220E1F7D008D5F46 /* BioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioViewController.swift; sourceTree = "<group>"; };
 		F50ADB112209F6F6009B57F0 /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
 		F50ADB13220C8A6D009B57F0 /* PhotographySignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotographySignInViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				F531D59B2211D2D000AB5D8D /* Stack.swift */,
 				F531D59D2211D48100AB5D8D /* Bio.swift */,
 				F58602252215BE0A007F7F3C /* Image.swift */,
+				F5032E0F221F05AE00C34915 /* DateFormatter.swift */,
 				F5FE67762208A64300E42133 /* Model.xcdatamodeld */,
 			);
 			path = Model;
@@ -197,6 +200,7 @@
 				F509BB89220E1F7D008D5F46 /* BioViewController.swift in Sources */,
 				F50ADB14220C8A6D009B57F0 /* PhotographySignInViewController.swift in Sources */,
 				F531D5A02211D84D00AB5D8D /* BioController.swift in Sources */,
+				F5032E10221F05AE00C34915 /* DateFormatter.swift in Sources */,
 				F5FE67652208A3B100E42133 /* AppDelegate.swift in Sources */,
 				F50ADB18220C8AF3009B57F0 /* ListPhotographersTableViewController.swift in Sources */,
 				F531D59C2211D2D000AB5D8D /* Stack.swift in Sources */,

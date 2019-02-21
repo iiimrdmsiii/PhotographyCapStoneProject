@@ -16,6 +16,8 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     // MARK: - Properties
     //*********************************************************
     
+    var dOBFormatter: DOBDateFormatter?
+    var isPickerHidden = true
     var image: Image?
     
     var bio: Bio? {
@@ -66,6 +68,11 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         super.viewDidLoad()
         
         updateView()
+        
+        // Mark: DOBFormatter
+        updateDOBLabel(date: dateOfBirthDatePicker.date)
+        
+        dateOfBirthDatePicker.isHidden = true
 
     }
     
@@ -174,8 +181,63 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         }
 
     //*********************************************************
-    // MARK: - Table view data source
+    // MARK: - Date of Birth DatePicker
     //*********************************************************
+    
+    func updateDOBLabel(date: Date) {
+        
+        dateOfBirthLabel.text = DOBDateFormatter.dateOfBirthFormatter.string(from: date)
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let normalCellHeight = CGFloat(44)
+        let largeCellHeight = CGFloat(200)
+        
+        switch (indexPath) {
+        case [0,0]:
+            return 380
+            
+        case [1,0]:
+            return 160
+            
+        case [2,0]:
+            return isPickerHidden ? normalCellHeight : largeCellHeight
+            
+        case [3,0]:
+            return 100
 
+        case [4,0]:
+            return largeCellHeight
+            
+        case [5,0]:
+            return 50
+            
+        default:
+            return normalCellHeight
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch (indexPath) {
+        case [2,0]:
+            dateOfBirthDatePicker.isHidden = !dateOfBirthDatePicker.isHidden
+            isPickerHidden = !isPickerHidden
+            
+            dateOfBirthLabel.textColor = isPickerHidden ? .black :
+            tableView.tintColor
+            
+            tableView.beginUpdates()
+            tableView.endUpdates()
+            
+        default:
+            break
+        }
+    }
+    
+    @IBAction func datePickerChanged(_ sender: UIDatePicker) {
+        updateDOBLabel(date: dateOfBirthDatePicker.date)
+    }
+    
 }
 
