@@ -29,7 +29,7 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
             emailTextField.text = bio.email
             passwordTextField.text = bio.password
             repeatPasswordTextField.text = bio.password
-            phoneNumber.text = "\(bio.number)"
+            phoneNumber.text = bio.number 
             emailTextField.text = bio.email
             currentStateTextField.text = bio.currentState
             instagramTextField.text = bio.instagram
@@ -87,7 +87,7 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         let password = passwordTextField.text,
         let repeatPassword = repeatPasswordTextField.text,
         let phone = phoneNumber.text,
-            let phoneNumber = Int16(phone),
+//            let phoneNumber = Int16(phone),
         let emailContact = emailContactTextField.text,
         let currentState = currentStateTextField.text,
         let instagram = instagramTextField.text,
@@ -100,7 +100,7 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
             bio.email = email
             bio.password = password
             bio.password = repeatPassword
-            bio.number = phoneNumber
+            bio.number = phone
             bio.email = emailContact
             bio.currentState = currentState
             bio.instagram = instagram
@@ -109,7 +109,7 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     
         } else {
             // create
-            BioController.shareController.createBio(name: name, number: phoneNumber, email: email, currentState: currentState, instagram: instagram, webSite: webSite, aboutYou: aboutYou, password: password)
+            BioController.shareController.createBio(name: name, number: phone, email: email, currentState: currentState, instagram: instagram, webSite: webSite, aboutYou: aboutYou, password: password)
             
         }
         

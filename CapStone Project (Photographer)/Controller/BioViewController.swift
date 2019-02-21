@@ -21,7 +21,7 @@ class BioViewController: UIViewController {
             
             nameTextField.text = bio.name
             emailTextField.text = bio.email
-            phoneNumberTextField.text = "\(bio.number)"
+            phoneNumberTextField.text = bio.number
             emailTextField.text = bio.email
             currentStateTextField.text = bio.currentState
             socialMediaTextField.text = bio.instagram
@@ -52,7 +52,8 @@ class BioViewController: UIViewController {
     @IBAction func saveBarButtonTapped(_ sender: UIBarButtonItem) {
         
         let name = nameTextField.text ?? ""
-        let phoneNumber = Int16(phoneNumberTextField!.text!) ?? 0
+//        let phoneNumber = Int16(phoneNumberTextField!.text!) ?? 0
+        let number = phoneNumberTextField.text ?? ""
         let email = emailTextField.text ?? ""
         let currentState = currentStateTextField.text ?? ""
         let socialMedia = socialMediaTextField.text ?? ""
@@ -60,7 +61,7 @@ class BioViewController: UIViewController {
         let about = aboutTextView.text ?? ""
         
         
-        bio = Bio(name: name, number: phoneNumber, email: email, currentState: currentState, instagram: socialMedia, webSite: website, aboutYou: about, password: "")
+        bio = Bio(name: name, number: number , email: email, currentState: currentState, instagram: socialMedia, webSite: website, aboutYou: about, password: "")
         
     }
 

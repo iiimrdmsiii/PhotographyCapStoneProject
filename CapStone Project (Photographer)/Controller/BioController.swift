@@ -28,7 +28,7 @@ class BioController {
     // Manage the bio
     
     // create bio
-    func createBio(name: String, number: Int16, email: String, currentState: String, instagram: String, webSite: String, aboutYou: String, password: String) {
+    func createBio(name: String, number: String, email: String, currentState: String, instagram: String, webSite: String, aboutYou: String, password: String) {
         let _ = Bio(name: name, number: number, email: email, currentState: currentState, instagram: instagram, webSite: webSite, aboutYou: aboutYou, password: password)
         save()
     }
