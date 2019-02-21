@@ -138,6 +138,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q12-bL-eda">
+                                <rect key="frame" x="138" y="117" width="99" height="30"/>
+                                <state key="normal" title="Choose Image"/>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a7s-jR-szj">
                                 <rect key="frame" x="100" y="64" width="175" height="136"/>
                                 <constraints>
@@ -232,10 +236,6 @@
                                 <rect key="frame" x="173" y="588" width="29" height="30"/>
                                 <state key="normal" title="Edit"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q12-bL-eda">
-                                <rect key="frame" x="138" y="117" width="99" height="30"/>
-                                <state key="normal" title="Choose Image"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -289,13 +289,29 @@
                         <viewLayoutGuide key="safeArea" id="Spi-q2-vjn"/>
                     </view>
                     <navigationItem key="navigationItem" title="Bio" id="ySJ-pd-b8B">
-                        <barButtonItem key="leftBarButtonItem" systemItem="save" id="9C6-RU-eKX"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="save" id="9C6-RU-eKX">
+                            <connections>
+                                <action selector="saveBarButtonTapped:" destination="gZv-qS-7Mf" id="38Y-DO-GaH"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="LTy-pP-PII">
                             <connections>
                                 <segue destination="rAh-Kx-oQr" kind="unwind" unwindAction="unwindToLoginScreenFor:" id="xfc-eX-9nx"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="aboutTextView" destination="RdW-CG-GBy" id="Utg-RF-NIu"/>
+                        <outlet property="bioImageView" destination="a7s-jR-szj" id="woK-MW-9C5"/>
+                        <outlet property="chooseImageButton" destination="q12-bL-eda" id="ISc-wN-c5E"/>
+                        <outlet property="currentStateTextField" destination="UG2-UO-aB7" id="gcn-PS-KOc"/>
+                        <outlet property="editButton" destination="peW-dX-n3I" id="9ew-tR-cZe"/>
+                        <outlet property="emailTextField" destination="rR0-7m-YKk" id="yeB-8D-n6C"/>
+                        <outlet property="nameTextField" destination="QoF-ye-qpI" id="hjC-rB-LHJ"/>
+                        <outlet property="phoneNumberTextField" destination="QQx-Ak-1qG" id="V9r-b4-Mbk"/>
+                        <outlet property="socialMediaTextField" destination="sQH-xv-ilc" id="Csr-KB-3zg"/>
+                        <outlet property="websiteTextField" destination="Esu-81-EI7" id="hbC-aa-5jk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="368-ID-HNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="rAh-Kx-oQr" userLabel="Exit" sceneMemberID="exit"/>

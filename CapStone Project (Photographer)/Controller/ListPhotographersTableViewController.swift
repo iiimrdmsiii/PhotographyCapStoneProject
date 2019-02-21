@@ -58,6 +58,21 @@ class ListPhotographersTableViewController: UITableViewController {
     // MARK: - Navigation
     //*********************************************************
     
-    
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "cellSegue" {
+            
+            guard let bioVC = segue.destination as?
+            BioViewController,
+            
+            let seletedRow =
+            tableView.indexPathForSelectedRow?.row else
+            { return }
+            
+            bioVC.loadViewIfNeeded()
+            
+            let bio = BioController.shareController.bios[seletedRow]
+            
+           bioVC.bio = bio
+        }
+    }
 }
