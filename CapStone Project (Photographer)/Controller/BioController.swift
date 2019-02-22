@@ -25,6 +25,8 @@ class BioController {
         }
     }
     
+    var photographerThatJustRegistered: Int?
+    
     // Manage the bio
     
     // create bio

@@ -29,7 +29,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="1PD-1R-2Jg" kind="show" id="9cN-UD-euB"/>
+                                    <segue destination="1PD-1R-2Jg" kind="show" id="F8M-1p-Qzj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eB7-cN-vfg">
@@ -67,7 +67,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H95-fB-YqN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="216.80000000000001" y="9.4452773613193415"/>
+            <point key="canvasLocation" x="487" y="-466"/>
         </scene>
         <!--Home-->
         <scene sceneID="JzP-aI-Mwn">
@@ -96,9 +96,9 @@
                                                 <constraint firstAttribute="width" constant="77" id="Fsl-Pq-6ol"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHn-QO-wom">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHn-QO-wom">
                                             <rect key="frame" x="85" y="19" width="274" height="32"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -114,7 +114,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="gZv-qS-7Mf" kind="show" id="Bhn-zz-WYd"/>
+                                    <outlet property="cellImageView" destination="lfv-55-S5N" id="2e3-2d-A28"/>
+                                    <outlet property="nameLabel" destination="oHn-QO-wom" id="6Zi-D5-Tlx"/>
+                                    <segue destination="gZv-qS-7Mf" kind="show" identifier="bioSegue" id="Bhn-zz-WYd"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -128,12 +130,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Srr-5p-r29" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3788" y="-331.48425787106447"/>
+            <point key="canvasLocation" x="2545" y="-466"/>
         </scene>
         <!--Bio-->
         <scene sceneID="jGz-Ku-4Jp">
             <objects>
-                <viewController id="gZv-qS-7Mf" customClass="BioViewController" customModule="CapStone_Project__Photographer_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BioViewControllerID" id="gZv-qS-7Mf" customClass="BioViewController" customModule="CapStone_Project__Photographer_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SV3-Jx-pMT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -221,7 +223,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RdW-CG-GBy">
-                                <rect key="frame" x="8" y="512" width="375" height="75"/>
+                                <rect key="frame" x="8" y="512" width="375" height="124"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -233,7 +235,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="peW-dX-n3I">
-                                <rect key="frame" x="173" y="588" width="29" height="30"/>
+                                <rect key="frame" x="173" y="637" width="29" height="30"/>
                                 <state key="normal" title="Edit"/>
                             </button>
                         </subviews>
@@ -316,7 +318,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="368-ID-HNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="rAh-Kx-oQr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5016.8000000000002" y="8.5457271364317844"/>
+            <point key="canvasLocation" x="2545" y="1212"/>
         </scene>
         <!--Photography Sign In View Controller-->
         <scene sceneID="yAk-r9-b7i">
@@ -390,12 +392,12 @@
                         <outlet property="loginButton" destination="1TX-qQ-hkD" id="FEL-aq-mG0"/>
                         <outlet property="passwordTextField" destination="DmL-Fz-8el" id="jHo-Kb-wMo"/>
                         <outlet property="userNameTextField" destination="Qsa-f5-vGq" id="ix8-dR-LXg"/>
-                        <segue destination="XLW-oM-g00" kind="presentation" identifier="LoginSegue" id="YKd-4U-hrr"/>
+                        <segue destination="gZv-qS-7Mf" kind="show" identifier="bioFromLoginSegue" id="VHf-Mh-7xZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vPN-7l-lml" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="216.80000000000001" y="841.52923538230891"/>
+            <point key="canvasLocation" x="486" y="438"/>
         </scene>
         <!--Create Bio Table View Controller-->
         <scene sceneID="Jh1-Sm-t5g">
@@ -735,7 +737,6 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="registerButtonTapped:" destination="iox-88-smh" eventType="touchUpInside" id="fAi-ro-X9e"/>
-                                                        <segue destination="XLW-oM-g00" kind="presentation" identifier="cellSegue" id="Lks-Um-nXm"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -768,14 +769,15 @@
                         <outlet property="nameTextField" destination="86C-48-urd" id="RF6-zX-Ze1"/>
                         <outlet property="passwordTextField" destination="XNq-lW-c9h" id="uih-dn-Qef"/>
                         <outlet property="phoneNumber" destination="ozc-3W-rbm" id="9y8-Io-3B4"/>
-                        <outlet property="registerButtonTapped" destination="rBM-0E-zbX" id="hmK-b5-ExX"/>
+                        <outlet property="registerButton" destination="rBM-0E-zbX" id="90w-Qx-RvX"/>
                         <outlet property="repeatPasswordTextField" destination="OAy-UX-eWB" id="cLd-VH-sdU"/>
                         <outlet property="websiteTextField" destination="OZm-fq-sYo" id="2Es-WV-zRh"/>
+                        <segue destination="gZv-qS-7Mf" kind="show" identifier="bioFromRegisterSegue" id="8Wr-Q5-aBZ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yl4-OX-oXw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1333.5999999999999" y="1154.5727136431785"/>
+            <point key="canvasLocation" x="450" y="1213"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6YY-lV-Y7A">
@@ -793,74 +795,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b0S-Lm-9yK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-618" y="10"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="F1q-Su-a0R">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="XLW-oM-g00" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="f9X-b6-xR4">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="v9s-yK-N4q" kind="relationship" relationship="viewControllers" id="1e2-uE-Rky"/>
-                        <segue destination="SNY-2d-B7o" kind="relationship" relationship="viewControllers" id="Au8-0S-DSb"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pOD-pN-cDN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2196" y="657"/>
-        </scene>
-        <!--Bio-->
-        <scene sceneID="33W-2S-pC3">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SNY-2d-B7o" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Bio" image="bio" selectedImage="bio" id="Th3-we-lpT"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Uil-MM-X6i">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="gZv-qS-7Mf" kind="relationship" relationship="rootViewController" id="Fdh-gO-AVQ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mNc-Vl-qUH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3788" y="690"/>
-        </scene>
-        <!--Home-->
-        <scene sceneID="blF-3e-dFQ">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v9s-yK-N4q" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="home" selectedImage="home" id="Ya2-3c-ION"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="G91-uW-6mq">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="1PD-1R-2Jg" kind="relationship" relationship="rootViewController" id="bp3-q8-nKV"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gOt-Bc-7CW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2991" y="204"/>
+            <point key="canvasLocation" x="-694" y="-101"/>
         </scene>
     </scenes>
     <resources>
         <image name="bg" width="390" height="728.15997314453125"/>
-        <image name="bio" width="37.5" height="37.5"/>
-        <image name="home" width="37.5" height="37.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Lks-Um-nXm"/>
-        <segue reference="Bhn-zz-WYd"/>
-        <segue reference="bp3-q8-nKV"/>
+        <segue reference="VHf-Mh-7xZ"/>
     </inferredMetricsTieBreakers>
 </document>

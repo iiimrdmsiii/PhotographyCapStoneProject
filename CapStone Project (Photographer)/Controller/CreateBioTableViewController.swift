@@ -16,6 +16,7 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     // MARK: - Properties
     //*********************************************************
     
+    var nameText = ""
     var dOBFormatter: DOBDateFormatter?
     var isPickerHidden = true
     var image: Image?
@@ -29,7 +30,7 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
             emailTextField.text = bio.email
             passwordTextField.text = bio.password
             repeatPasswordTextField.text = bio.password
-            phoneNumber.text = bio.number 
+            phoneNumber.text = bio.number
             emailTextField.text = bio.email
             currentStateTextField.text = bio.currentState
             instagramTextField.text = bio.instagram
@@ -58,10 +59,10 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     @IBOutlet weak var instagramTextField: UITextField!
     @IBOutlet weak var websiteTextField: UITextField!
     @IBOutlet weak var aboutYouTextView: UITextView!
-    @IBOutlet weak var registerButtonTapped: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
     
     //*********************************************************
-    // MARK: - ViewDidLoad Method
+    // MARK: - Methods and ViewDidLoad Method
     //*********************************************************
 
     override func viewDidLoad() {
@@ -73,8 +74,11 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         updateDOBLabel(date: dateOfBirthDatePicker.date)
         
         dateOfBirthDatePicker.isHidden = true
+        
+        
 
     }
+    
     
     //*********************************************************
     // MARK: - Register Button Action
@@ -87,7 +91,6 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         let password = passwordTextField.text,
         let repeatPassword = repeatPasswordTextField.text,
         let phone = phoneNumber.text,
-//            let phoneNumber = Int16(phone),
         let emailContact = emailContactTextField.text,
         let currentState = currentStateTextField.text,
         let instagram = instagramTextField.text,
@@ -113,9 +116,15 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
             
         }
         
-        self.navigationController?.popViewController(animated: true)
+        performSegue(withIdentifier: "bioFromRegisterSegue", sender: self)
         
     }
+    
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        var listPhotographyTableViewController = segue.destination as! ListPhotographersTableViewController
+//        listPhotographyTableViewController.bio = self.nameText
+//    }
     
     //*********************************************************
     // MARK: - UIImageView for picking photos from the library
@@ -184,12 +193,14 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     // MARK: - Date of Birth DatePicker
     //*********************************************************
     
+    // Whenever you change the date the label will change the the date youve changed to.
     func updateDOBLabel(date: Date) {
         
         dateOfBirthLabel.text = DOBDateFormatter.dateOfBirthFormatter.string(from: date)
         
     }
     
+    // control the heights
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let normalCellHeight = CGFloat(44)
         let largeCellHeight = CGFloat(200)
@@ -218,6 +229,7 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         }
     }
     
+    // Picked row
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath) {
         case [2,0]:
@@ -235,6 +247,7 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         }
     }
     
+    // action for the datePickerChanged
     @IBAction func datePickerChanged(_ sender: UIDatePicker) {
         updateDOBLabel(date: dateOfBirthDatePicker.date)
     }

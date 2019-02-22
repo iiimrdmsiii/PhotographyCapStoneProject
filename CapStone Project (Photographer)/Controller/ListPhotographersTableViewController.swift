@@ -14,7 +14,7 @@ class ListPhotographersTableViewController: UITableViewController {
     // MARK: - Properties
     //*********************************************************
     
-
+    var bio = [Bio]()
     
     //*********************************************************
     // MARK: - Override Methods
@@ -59,20 +59,15 @@ class ListPhotographersTableViewController: UITableViewController {
     //*********************************************************
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "cellSegue" {
-            
-            guard let bioVC = segue.destination as?
-            BioViewController,
-            
-            let seletedRow =
-            tableView.indexPathForSelectedRow?.row else
-            { return }
-            
-            bioVC.loadViewIfNeeded()
-            
-            let bio = BioController.shareController.bios[seletedRow]
-            
-           bioVC.bio = bio
+        guard let bioVC = segue.destination as? BioViewController,
+            let seletedRow = tableView.indexPathForSelectedRow?.row else { return }
+        
+        
+        bioVC.loadViewIfNeeded()
+        let bio = BioController.shareController.bios[seletedRow]
+        
+        if segue.identifier == "bioSegue" {
+            bioVC.bio = bio
         }
     }
 }

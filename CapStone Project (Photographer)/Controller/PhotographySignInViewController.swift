@@ -39,7 +39,7 @@ class PhotographySignInViewController: UIViewController {
             
             self.present(alert, animated: true, completion: nil)
             
-            print("sorry it didnt login")
+            print("You need to sign in first or enter email and password.")
         } else {
             performSegue(withIdentifier: "LoginSegue", sender: self)
             
@@ -54,6 +54,8 @@ class PhotographySignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.loginButton.layer.cornerRadius = 15
+        self.dontHaveAnAccountButton.layer.cornerRadius = 10
         
     }
     

@@ -10,6 +10,10 @@ import UIKit
 
 class BioViewController: UIViewController {
     
+//    self.navigationController?.pushViewController(nextViewController, animated: true)
+
+    //      performSegue(withIdentifier: "mySegueID", sender: nil)
+    
     //*********************************************************
     // MARK: - Properties
     //*********************************************************
@@ -19,15 +23,11 @@ class BioViewController: UIViewController {
         didSet {
             guard let bio = bio else { return }
             
-            nameTextField.text = bio.name
-            emailTextField.text = bio.email
-            phoneNumberTextField.text = bio.number
-            emailTextField.text = bio.email
-            currentStateTextField.text = bio.currentState
-            socialMediaTextField.text = bio.instagram
-            websiteTextField.text = bio.webSite
-            aboutTextView.text = bio.aboutYou
-            
+            //if isCustomer is true then hide the buttons so the view works for customers
+            //if isCustomer is false then dont do anything, the view was already designed for photographers
+//            updateView(with: bio.isCustomer)
+//            bio.isCustomer
+            updateView(with: bio)
         }
     }
     
@@ -66,14 +66,28 @@ class BioViewController: UIViewController {
     }
 
     
+    func updateView(with bio: Bio) {
+        nameTextField.text = bio.name
+        emailTextField.text = bio.email
+        phoneNumberTextField.text = bio.number
+        emailTextField.text = bio.email
+        currentStateTextField.text = bio.currentState
+        socialMediaTextField.text = bio.instagram
+        websiteTextField.text = bio.webSite
+        aboutTextView.text = bio.aboutYou
+    }
     
     //*********************************************************
     // MARK: - Override Methods
     //*********************************************************
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let photographerIndex = BioController.shareController.photographerThatJustRegistered {
+            let bio = BioController.shareController.bios[photographerIndex]
+            updateView(with: bio)
+        }
     }
     
     //*********************************************************
