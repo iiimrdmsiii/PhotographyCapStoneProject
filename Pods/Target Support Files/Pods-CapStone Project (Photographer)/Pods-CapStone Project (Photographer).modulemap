@@ -1,0 +1,6 @@
+framework module Pods_CapStone_Project__Photographer_ {
+  umbrella header "Pods-CapStone Project (Photographer)-umbrella.h"
+
+  export *
+  module * { export * }
+}
