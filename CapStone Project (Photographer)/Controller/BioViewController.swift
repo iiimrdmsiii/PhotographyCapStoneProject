@@ -7,12 +7,10 @@
 //
 
 import UIKit
+import FirebaseAuth
+import Firebase
 
 class BioViewController: UIViewController {
-    
-//    self.navigationController?.pushViewController(nextViewController, animated: true)
-
-    //      performSegue(withIdentifier: "mySegueID", sender: nil)
     
     //*********************************************************
     // MARK: - Properties
@@ -77,6 +75,17 @@ class BioViewController: UIViewController {
         aboutTextView.text = bio.aboutYou
     }
     
+    @IBAction func logoutButtonTapped(_ sender: UIBarButtonItem) {
+        
+        do {
+            try Auth.auth().signOut()
+            
+            self.dismiss(animated: true, completion: nil)
+        } catch {
+            print("There's a problem loggiog out")
+        }
+        
+    }
     //*********************************************************
     // MARK: - Override Methods
     //*********************************************************
@@ -89,6 +98,14 @@ class BioViewController: UIViewController {
             updateView(with: bio)
         }
     }
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        
+//        if let user = Auth.auth().currentUser {
+//            self.performSegue(withIdentifier: "bioFromRegisterSegue", sender: self)
+//        }
+//    }
     
     //*********************************************************
     // MARK: -

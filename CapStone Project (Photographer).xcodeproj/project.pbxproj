@@ -70,7 +70,6 @@
 				484BD54C96D397D23D4B6A72 /* Pods-CapStone Project (Photographer).debug.xcconfig */,
 				461102DEFD69796DD9A976C8 /* Pods-CapStone Project (Photographer).release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

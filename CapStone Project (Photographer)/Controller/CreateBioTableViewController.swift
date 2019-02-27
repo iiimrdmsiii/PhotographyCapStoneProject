@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
+import FirebaseAuth
 
 class CreateBioTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -75,6 +76,8 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         
         dateOfBirthDatePicker.isHidden = true
         
+        registerButton.addTarget(self, action: #selector(handleRegister), for: .touchUpInside)
+        
         
 
     }
@@ -85,6 +88,24 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     //*********************************************************
     
     @IBAction func registerButtonTapped(_ sender: Any) {
+        
+//        if let email = emailTextField.text, let password = passwordTextField.text {
+//
+//            Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+//                if let firebaseError = error {
+//                    print(firebaseError.localizedDescription)
+//                    return
+//                }
+//                print("success!")
+//            }
+//        }
+        
+//        if passwordTextField.text == repeatPasswordTextField.text {
+//            true
+//        } else {
+//            false
+//        }
+        
         // update
         guard let name = nameTextField.text,
         let email = emailTextField.text,
@@ -250,6 +271,45 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     // action for the datePickerChanged
     @IBAction func datePickerChanged(_ sender: UIDatePicker) {
         updateDOBLabel(date: dateOfBirthDatePicker.date)
+    }
+    
+    //*********************************************************
+    // MARK: - Handle the register
+    //*********************************************************
+    
+    @objc func handleRegister() {
+        
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+        
+        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+            if error == nil && user != nil {
+                print("User created!")
+            } else {
+                print("Error creating user: \(error!.localizedDescription)")
+            }
+        }
+        
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        // Resigns the target textField and assigns the next textField in the form.
+        
+        switch textField {
+        case emailTextField:
+            emailTextField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+            break
+        case passwordTextField:
+            handleRegister()
+            break
+        default:
+            break
+        }
+        return true
     }
     
 }

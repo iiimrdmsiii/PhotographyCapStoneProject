@@ -298,6 +298,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="LTy-pP-PII">
                             <connections>
+                                <action selector="logoutButtonTapped:" destination="gZv-qS-7Mf" id="YaN-F7-wVT"/>
                                 <segue destination="rAh-Kx-oQr" kind="unwind" unwindAction="unwindToLoginScreenFor:" id="xfc-eX-9nx"/>
                             </connections>
                         </barButtonItem>
@@ -802,6 +803,6 @@
         <image name="bg" width="390" height="728.15997314453125"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VHf-Mh-7xZ"/>
+        <segue reference="8Wr-Q5-aBZ"/>
     </inferredMetricsTieBreakers>
 </document>

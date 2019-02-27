@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import Firebase
 
 class PhotographySignInViewController: UIViewController {
     
@@ -31,6 +33,16 @@ class PhotographySignInViewController: UIViewController {
     // If nothing in TextField, it wont move to next screen and give an alert else has TextField Will move to next screen.
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         
+//        if let email = userNameTextField.text, let password = passwordTextField.text {
+//            Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+//                if let firebaseError = error {
+//                    print(firebaseError.localizedDescription)
+//                    return
+//                }
+//                print("logged in worked")
+//            }
+//        }
+        
         if userNameTextField.text?.isEmpty ?? false || passwordTextField.text?.isEmpty ?? false {
             
             let alert = UIAlertController(title: "Login Alert", message: "Please put in Email or Passward.", preferredStyle: .alert)
@@ -41,11 +53,19 @@ class PhotographySignInViewController: UIViewController {
             
             print("You need to sign in first or enter email and password.")
         } else {
-            performSegue(withIdentifier: "LoginSegue", sender: self)
+//            performSegue(withIdentifier: "bioFromLoginSegue", sender: self)
+            loginButton.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
             
             print("It worked!!!")
         }
     }
+    
+//    func presentLoggedInScreen() {
+//
+//        let stroyborad: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let photographySignIn: PhotographySignInViewController = stroyborad.instantiateInitialViewController(withIdentifier: "bioFromLoginSegue")
+//        self.present(PhotographySignInViewController, animated: true, completion: nil)
+//    }
     
     //*********************************************************
     // MARK: - Override Methods
@@ -57,18 +77,37 @@ class PhotographySignInViewController: UIViewController {
         self.loginButton.layer.cornerRadius = 15
         self.dontHaveAnAccountButton.layer.cornerRadius = 10
         
+        
+        
     }
     
     //*********************************************************
     // MARK: - Methods
     //*********************************************************
     
+    
+    
     // Unwind segue from the logout button for the Photographers
     @IBAction func unwindToLoginScreen(for unwindSegue: UIStoryboardSegue) {
     }
     
-
+    @objc func handleLogin() {
+        
+        guard let email = userNameTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+        Auth.auth().signIn(withEmail: email, link: password) { (user, error) in
+            if error == nil && user != nil {
+                self.dismiss(animated: false, completion: nil)
+            } else {
+                print("Error Logging in: \(error!.localizedDescription)")
+            }
+        }
+    }
 }
+
+
+
 
 
 
