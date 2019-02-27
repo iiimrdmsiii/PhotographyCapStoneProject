@@ -80,9 +80,8 @@ class BioViewController: UIViewController {
         do {
             try Auth.auth().signOut()
             
-            self.dismiss(animated: true, completion: nil)
-        } catch {
-            print("There's a problem loggiog out")
+        } catch let signOutError as NSError {
+            print("There's a problem loggiog out, \(signOutError)")
         }
         
     }
@@ -99,13 +98,7 @@ class BioViewController: UIViewController {
         }
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        
-//        if let user = Auth.auth().currentUser {
-//            self.performSegue(withIdentifier: "bioFromRegisterSegue", sender: self)
-//        }
-//    }
+
     
     //*********************************************************
     // MARK: -

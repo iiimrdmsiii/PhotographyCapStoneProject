@@ -16,6 +16,7 @@ class PhotographySignInViewController: UIViewController {
     // MARK: - Properties
     //*********************************************************
     
+    var isSignIn: Bool = true
     
     
     //*********************************************************
@@ -54,7 +55,8 @@ class PhotographySignInViewController: UIViewController {
             print("You need to sign in first or enter email and password.")
         } else {
 //            performSegue(withIdentifier: "bioFromLoginSegue", sender: self)
-            loginButton.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+            
+            
             
             print("It worked!!!")
         }
@@ -77,28 +79,37 @@ class PhotographySignInViewController: UIViewController {
         self.loginButton.layer.cornerRadius = 15
         self.dontHaveAnAccountButton.layer.cornerRadius = 10
         
+        loginButton.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        userNameTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
     }
     
     //*********************************************************
     // MARK: - Methods
     //*********************************************************
     
-    
-    
     // Unwind segue from the logout button for the Photographers
     @IBAction func unwindToLoginScreen(for unwindSegue: UIStoryboardSegue) {
+        
+        userNameTextField.text = ""
+        passwordTextField.text = ""
     }
     
+    // handle the login for username and password to be able to get to the bio
     @objc func handleLogin() {
         
         guard let email = userNameTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         
-        Auth.auth().signIn(withEmail: email, link: password) { (user, error) in
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if error == nil && user != nil {
-                self.dismiss(animated: false, completion: nil)
+                self.performSegue(withIdentifier: "bioFromLoginSegue", sender: self)
             } else {
                 print("Error Logging in: \(error!.localizedDescription)")
             }
@@ -117,6 +128,15 @@ class PhotographySignInViewController: UIViewController {
 //*********************************************************
 // MARK: - Others
 //*********************************************************
+
+
+//        override func viewDidAppear(_ animated: Bool) {
+//            super.viewDidAppear(animated)
+//
+//            if let user = Auth.auth().currentUser {
+//                self.performSegue(withIdentifier: "bioFromLoginSegue", sender: self)
+//            }
+//        }
 
 
 // Login Action

@@ -294,23 +294,23 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     }
     
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        // Resigns the target textField and assigns the next textField in the form.
-        
-        switch textField {
-        case emailTextField:
-            emailTextField.resignFirstResponder()
-            passwordTextField.becomeFirstResponder()
-            break
-        case passwordTextField:
-            handleRegister()
-            break
-        default:
-            break
-        }
-        return true
-    }
-    
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//
+//        // Resigns the target textField and assigns the next textField in the form.
+//
+//        switch textField {
+//        case emailTextField:
+//            emailTextField.resignFirstResponder()
+//            passwordTextField.becomeFirstResponder()
+//            break
+//        case passwordTextField:
+//            handleRegister()
+//            break
+//        default:
+//            break
+//        }
+//        return true
+//    }
+//
 }
 
