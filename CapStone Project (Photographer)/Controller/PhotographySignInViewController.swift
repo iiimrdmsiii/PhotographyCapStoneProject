@@ -112,8 +112,18 @@ class PhotographySignInViewController: UIViewController {
                 self.performSegue(withIdentifier: "bioFromLoginSegue", sender: self)
             } else {
                 print("Error Logging in: \(error!.localizedDescription)")
+                
+                self.resetForm()
             }
         }
+    }
+    
+    func resetForm() {
+        
+        let alert = UIAlertController(title: "Check your Email or Password", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
     }
 }
 

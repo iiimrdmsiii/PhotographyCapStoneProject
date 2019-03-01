@@ -260,9 +260,15 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     
     @objc func handleRegister() {
         
+        guard let image = imageView.image else { return }
+        guard let name = nameTextField.text else { return }
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
-        guard let image = imageView.image else { return }
+        guard let phoneNumber = phoneNumber.text else { return }
+        guard let currentState = currentStateTextField.text else { return }
+        guard let instagram = instagramTextField.text else { return }
+        guard let website = websiteTextField.text else { return }
+        guard let about = aboutYouTextView.text else { return }
         
         
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
@@ -275,7 +281,10 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
                     
                     if url != nil {
                         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                        
                         changeRequest?.photoURL = url
+                        changeRequest?.displayName = name
+                        
                         
                         changeRequest?.commitChanges { error in
                             if error == nil {
@@ -326,7 +335,6 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
                 storageRef.downloadURL { (url, error) in
                     completion(nil)
                 }
-               
             } else {
                 // fail
                 completion(nil)
