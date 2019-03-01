@@ -10,5 +10,6 @@ target 'CapStone Project (Photographer)' do
 pod 'Firebase/Core'
 pod 'Firebase/Database'
 pod 'FirebaseUI/Auth'
+pod 'Firebase/Storage'
 
 end

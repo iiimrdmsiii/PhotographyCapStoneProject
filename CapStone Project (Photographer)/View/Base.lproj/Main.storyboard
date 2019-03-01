@@ -67,7 +67,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H95-fB-YqN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="487" y="-466"/>
+            <point key="canvasLocation" x="967" y="-392"/>
         </scene>
         <!--Home-->
         <scene sceneID="JzP-aI-Mwn">
@@ -130,7 +130,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Srr-5p-r29" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2545" y="-466"/>
+            <point key="canvasLocation" x="1446" y="438"/>
         </scene>
         <!--Bio-->
         <scene sceneID="jGz-Ku-4Jp">
@@ -223,7 +223,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RdW-CG-GBy">
-                                <rect key="frame" x="8" y="512" width="375" height="124"/>
+                                <rect key="frame" x="8" y="512" width="375" height="75"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -235,7 +235,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="peW-dX-n3I">
-                                <rect key="frame" x="173" y="637" width="29" height="30"/>
+                                <rect key="frame" x="173" y="588" width="29" height="30"/>
                                 <state key="normal" title="Edit"/>
                             </button>
                         </subviews>
@@ -319,7 +319,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="368-ID-HNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="rAh-Kx-oQr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2545" y="1212"/>
+            <point key="canvasLocation" x="1447" y="1212"/>
         </scene>
         <!--Photography Sign In View Controller-->
         <scene sceneID="yAk-r9-b7i">
@@ -419,7 +419,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BiA-Zg-IAm">
-                                                    <rect key="frame" x="96" y="21" width="183" height="128"/>
+                                                    <rect key="frame" x="106" y="11" width="163" height="118"/>
                                                     <state key="normal" title="Choose Image"/>
                                                     <connections>
                                                         <action selector="chooseButtonPhotoTapped:" destination="iox-88-smh" eventType="touchUpInside" id="Epa-Dw-nYq"/>
@@ -498,7 +498,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="86C-48-urd" secondAttribute="trailing" constant="20" id="4iv-IE-RXv"/>
                                                 <constraint firstAttribute="trailing" secondItem="98R-B9-7RL" secondAttribute="trailing" constant="20" id="4yC-eE-iG6"/>
-                                                <constraint firstItem="86C-48-urd" firstAttribute="top" secondItem="BiA-Zg-IAm" secondAttribute="bottom" constant="10" id="4za-qj-dCe"/>
+                                                <constraint firstItem="86C-48-urd" firstAttribute="top" secondItem="BiA-Zg-IAm" secondAttribute="bottom" constant="30" id="4za-qj-dCe"/>
                                                 <constraint firstItem="h2c-XX-NLC" firstAttribute="leading" secondItem="bG5-Lc-FjP" secondAttribute="leadingMargin" id="Ady-ZJ-ZtY"/>
                                                 <constraint firstItem="86C-48-urd" firstAttribute="top" secondItem="t7h-7a-RvF" secondAttribute="bottom" constant="30" id="C0A-DN-fce"/>
                                                 <constraint firstItem="86C-48-urd" firstAttribute="top" secondItem="dTJ-rN-qik" secondAttribute="bottom" constant="8" id="CuO-v1-iF9"/>
@@ -507,16 +507,16 @@
                                                 <constraint firstItem="Wgr-pD-FBt" firstAttribute="top" secondItem="XNq-lW-c9h" secondAttribute="bottom" constant="4" id="Kt7-h8-IEG"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cA5-3t-mre" secondAttribute="trailing" constant="20" symbolic="YES" id="LoQ-wY-TQk"/>
                                                 <constraint firstItem="XNq-lW-c9h" firstAttribute="leading" secondItem="bG5-Lc-FjP" secondAttribute="leading" constant="20" id="PW6-eF-5b9"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="BiA-Zg-IAm" secondAttribute="trailing" constant="80" id="Qif-nq-ZTY"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="BiA-Zg-IAm" secondAttribute="trailing" constant="90" id="Qif-nq-ZTY"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="h2c-XX-NLC" secondAttribute="trailing" constant="20" symbolic="YES" id="Qxy-Gx-BIT"/>
-                                                <constraint firstItem="BiA-Zg-IAm" firstAttribute="leading" secondItem="bG5-Lc-FjP" secondAttribute="leadingMargin" constant="80" id="UGz-gm-Ndi"/>
+                                                <constraint firstItem="BiA-Zg-IAm" firstAttribute="leading" secondItem="bG5-Lc-FjP" secondAttribute="leadingMargin" constant="90" id="UGz-gm-Ndi"/>
                                                 <constraint firstItem="98R-B9-7RL" firstAttribute="top" secondItem="h2c-XX-NLC" secondAttribute="bottom" constant="2" id="Vjb-5u-TcZ"/>
                                                 <constraint firstAttribute="trailing" secondItem="t7h-7a-RvF" secondAttribute="trailing" constant="110" id="Yze-jK-zSy"/>
                                                 <constraint firstItem="Wgr-pD-FBt" firstAttribute="leading" secondItem="bG5-Lc-FjP" secondAttribute="leadingMargin" id="aJz-E5-v4e"/>
                                                 <constraint firstItem="OAy-UX-eWB" firstAttribute="leading" secondItem="bG5-Lc-FjP" secondAttribute="leading" constant="20" id="dwH-So-aGU"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Wgr-pD-FBt" secondAttribute="trailing" constant="20" symbolic="YES" id="eh0-4q-knt"/>
                                                 <constraint firstItem="86C-48-urd" firstAttribute="leading" secondItem="bG5-Lc-FjP" secondAttribute="leading" constant="20" id="guR-ab-eq1"/>
-                                                <constraint firstItem="BiA-Zg-IAm" firstAttribute="top" secondItem="bG5-Lc-FjP" secondAttribute="topMargin" constant="10" id="h3R-v0-RxP"/>
+                                                <constraint firstItem="BiA-Zg-IAm" firstAttribute="top" secondItem="bG5-Lc-FjP" secondAttribute="topMargin" id="h3R-v0-RxP"/>
                                                 <constraint firstItem="h2c-XX-NLC" firstAttribute="top" secondItem="86C-48-urd" secondAttribute="bottom" constant="16" id="hCb-8O-wzL"/>
                                                 <constraint firstItem="dTJ-rN-qik" firstAttribute="leading" secondItem="bG5-Lc-FjP" secondAttribute="leadingMargin" id="iNg-TQ-40E"/>
                                                 <constraint firstItem="cA5-3t-mre" firstAttribute="leading" secondItem="bG5-Lc-FjP" secondAttribute="leadingMargin" id="inQ-ZP-64T"/>
@@ -796,13 +796,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b0S-Lm-9yK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-694" y="-101"/>
+            <point key="canvasLocation" x="39" y="-393"/>
         </scene>
     </scenes>
     <resources>
         <image name="bg" width="390" height="728.15997314453125"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VHf-Mh-7xZ"/>
+        <segue reference="Bhn-zz-WYd"/>
     </inferredMetricsTieBreakers>
 </document>

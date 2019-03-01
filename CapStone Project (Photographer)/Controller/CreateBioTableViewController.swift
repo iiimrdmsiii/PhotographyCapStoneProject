@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 import FirebaseAuth
+import Firebase
 
 class CreateBioTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -17,6 +18,8 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     // MARK: - Properties
     //*********************************************************
     
+    
+    var imagePicker: UIImagePickerController!
     var nameText = ""
     var dOBFormatter: DOBDateFormatter?
     var isPickerHidden = true
@@ -89,23 +92,6 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     
     @IBAction func registerButtonTapped(_ sender: Any) {
         
-//        if let email = emailTextField.text, let password = passwordTextField.text {
-//
-//            Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-//                if let firebaseError = error {
-//                    print(firebaseError.localizedDescription)
-//                    return
-//                }
-//                print("success!")
-//            }
-//        }
-        
-//        if passwordTextField.text == repeatPasswordTextField.text {
-//            true
-//        } else {
-//            false
-//        }
-        
         // update
         guard let name = nameTextField.text,
         let email = emailTextField.text,
@@ -140,12 +126,7 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         performSegue(withIdentifier: "bioFromRegisterSegue", sender: self)
         
     }
-    
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        var listPhotographyTableViewController = segue.destination as! ListPhotographersTableViewController
-//        listPhotographyTableViewController.bio = self.nameText
-//    }
+
     
     //*********************************************************
     // MARK: - UIImageView for picking photos from the library
@@ -274,43 +255,107 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     }
     
     //*********************************************************
-    // MARK: - Handle the register
+    // MARK: - Handle the register and FireBase
     //*********************************************************
     
     @objc func handleRegister() {
         
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
+        guard let image = imageView.image else { return }
         
         
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if error == nil && user != nil {
                 print("User created!")
+                
+                // Upload the profile image to Firebase Storage
+                
+                self.uploadProfileImage(image) { url in
+                    
+                    if url != nil {
+                        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                        changeRequest?.photoURL = url
+                        
+                        changeRequest?.commitChanges { error in
+                            if error == nil {
+                                print("User display name changed!")
+                                
+                                 // save the profile data to Firebase Database
+                                self.saveBioFirebase(profileImageURL: url!) { success in
+                                    if success {
+                                        self.dismiss(animated: true, completion: nil)
+                                    } else {
+                                        self.restForm()
+                                    }
+                                }
+                                
+                            } else {
+                                print("Error: \(error!.localizedDescription)")
+                                self.restForm()
+                            }
+                        }
+                    } else {
+                        self.restForm()
+                    }
+                }
+                
+                // dismiss the veiw
             } else {
-                print("Error creating user: \(error!.localizedDescription)")
+                self.restForm()
             }
         }
-        
     }
     
+    // Upload the image from Firebase
+    func uploadProfileImage(_ image: UIImage, completion: @escaping ((_ url: URL?) ->())) {
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let storageRef = Storage.storage().reference().child("user/\(uid)")
+        
+        guard let imageData = image.jpegData(compressionQuality: 0.75) else { return }
+        
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpg"
+        
+        
+        storageRef.putData(imageData, metadata: metaData) { (metaData, error) in
+            if error == nil, metaData != nil {
+                
+                // success
+                storageRef.downloadURL { (url, error) in
+                    completion(nil)
+                }
+               
+            } else {
+                // fail
+                completion(nil)
+            }
+        }
+    }
     
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//
-//        // Resigns the target textField and assigns the next textField in the form.
-//
-//        switch textField {
-//        case emailTextField:
-//            emailTextField.resignFirstResponder()
-//            passwordTextField.becomeFirstResponder()
-//            break
-//        case passwordTextField:
-//            handleRegister()
-//            break
-//        default:
-//            break
-//        }
-//        return true
-//    }
-//
+    // save the image on to firebase.
+    func saveBioFirebase(profileImageURL: URL, completion: @escaping ((_ success: Bool) -> ())) {
+        
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let databaseRef = Database.database().reference().child("users/profile/\(uid)")
+        
+        let userObject = [
+            "photoURL": profileImageURL.absoluteString
+            ] as [String:Any]
+        
+        databaseRef.setValue(userObject) { error, ref in
+            completion(error == nil)
+        }
+    }
+    
+    // catches the error to alert you for signing up.
+    func restForm() {
+        
+        let alert = UIAlertController(title: "Error signing up", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
 }
 
