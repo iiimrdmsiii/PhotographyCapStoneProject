@@ -18,6 +18,7 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     // MARK: - Properties
     //*********************************************************
     
+    var db: Firestore!
     
     var imagePicker: UIImagePickerController!
     var nameText = ""
@@ -81,7 +82,7 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         
         registerButton.addTarget(self, action: #selector(handleRegister), for: .touchUpInside)
         
-        
+        db = Firestore.firestore()
 
     }
     
@@ -259,18 +260,18 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     //*********************************************************
     
     @objc func handleRegister() {
-        print("handleRegister func")
+
         guard let image = imageView.image else { return }
         guard let name = nameTextField.text else { return }
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
-//        guard let phoneNumber = phoneNumber.text else { return }
-//        guard let currentState = currentStateTextField.text else { return }
-//        guard let instagram = instagramTextField.text else { return }
-//        guard let website = websiteTextField.text else { return }
-//        guard let about = aboutYouTextView.text else { return }
-        print("post return statements")
-        
+        guard let phoneNumber = phoneNumber.text else { return }
+        guard let currentState = currentStateTextField.text else { return }
+        guard let instagram = instagramTextField.text else { return }
+        guard let website = websiteTextField.text else { return }
+        guard let about = aboutYouTextView.text else { return }
+
+        firebaseWrite()
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if error == nil && user != nil {
                 print("User created!")
@@ -292,11 +293,9 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
                                 
                                  // save the profile data to Firebase Database
                                 self.saveBioFirebase(profileImageURL: url!) { success in
-                                    print("success: \(success)")
                                     if success {
                                         self.dismiss(animated: true, completion: nil)
                                     } else {
-                                        print("this is my error: \(String(describing: error))")
                                         self.restForm()
                                     }
                                 }
@@ -307,7 +306,6 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
                             }
                         }
                     } else {
-                        print("Error: \(error!.localizedDescription)")
                         self.restForm()
                     }
                 }
@@ -368,5 +366,39 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         self.present(alert, animated: true, completion: nil)
         
     }
+    
+    // Add a new document with a generated ID
+    
+    private func firebaseWrite() {
+        var ref: DocumentReference? = nil
+            ref = db.collection("users").addDocument(data: [
+                "image" : "/users/profile",
+                "name" : "",
+                "email" : "",
+                "currentState" : "",
+                "phoneNumber" : "",
+                "socialMedia" : "",
+                "website" : "",
+                "aboutYou" : "",
+                ]) { err in
+                    if let  err = err {
+                        print("Error adding document: \(err)")
+    
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
+            }
+        }
+    
+            db.collection("users").getDocuments() { ( querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        print("\(document.documentID) => \(document.data())")
+                    }
+                }
+            }
+    }
+
 }
 
