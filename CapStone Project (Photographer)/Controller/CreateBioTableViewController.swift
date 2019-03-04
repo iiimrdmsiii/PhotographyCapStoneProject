@@ -259,17 +259,17 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     //*********************************************************
     
     @objc func handleRegister() {
-        
+        print("handleRegister func")
         guard let image = imageView.image else { return }
         guard let name = nameTextField.text else { return }
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
-        guard let phoneNumber = phoneNumber.text else { return }
-        guard let currentState = currentStateTextField.text else { return }
-        guard let instagram = instagramTextField.text else { return }
-        guard let website = websiteTextField.text else { return }
-        guard let about = aboutYouTextView.text else { return }
-        
+//        guard let phoneNumber = phoneNumber.text else { return }
+//        guard let currentState = currentStateTextField.text else { return }
+//        guard let instagram = instagramTextField.text else { return }
+//        guard let website = websiteTextField.text else { return }
+//        guard let about = aboutYouTextView.text else { return }
+        print("post return statements")
         
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if error == nil && user != nil {
@@ -292,9 +292,11 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
                                 
                                  // save the profile data to Firebase Database
                                 self.saveBioFirebase(profileImageURL: url!) { success in
+                                    print("success: \(success)")
                                     if success {
                                         self.dismiss(animated: true, completion: nil)
                                     } else {
+                                        print("this is my error: \(String(describing: error))")
                                         self.restForm()
                                     }
                                 }
@@ -305,6 +307,7 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
                             }
                         }
                     } else {
+                        print("Error: \(error!.localizedDescription)")
                         self.restForm()
                     }
                 }
@@ -344,7 +347,7 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     
     // save the image on to firebase.
     func saveBioFirebase(profileImageURL: URL, completion: @escaping ((_ success: Bool) -> ())) {
-        
+        print("saveBioFirebase func")
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let databaseRef = Database.database().reference().child("users/profile/\(uid)")
         
