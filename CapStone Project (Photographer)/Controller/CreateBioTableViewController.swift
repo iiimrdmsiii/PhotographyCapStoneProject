@@ -19,6 +19,7 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     //*********************************************************
     
     var db: Firestore!
+    var docRef: DocumentReference!
     
     var imagePicker: UIImagePickerController!
     var nameText = ""
@@ -83,6 +84,8 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         registerButton.addTarget(self, action: #selector(handleRegister), for: .touchUpInside)
         
         db = Firestore.firestore()
+        
+        docRef = db.document("users/profile")
 
     }
     
@@ -93,17 +96,27 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     
     @IBAction func registerButtonTapped(_ sender: Any) {
         
+        
         // update
-        guard let name = nameTextField.text,
-        let email = emailTextField.text,
-        let password = passwordTextField.text,
-        let repeatPassword = repeatPasswordTextField.text,
-        let phone = phoneNumber.text,
-        let emailContact = emailContactTextField.text,
-        let currentState = currentStateTextField.text,
-        let instagram = instagramTextField.text,
-        let webSite = websiteTextField.text,
-        let aboutYou = aboutYouTextView.text else { return }
+        guard let name = nameTextField.text, !name.isEmpty else {return}
+        guard let email = emailTextField.text, !email.isEmpty else {return}
+        guard let password = passwordTextField.text, !password.isEmpty else {return}
+        guard let repeatPassword = repeatPasswordTextField.text, !repeatPassword.isEmpty  else {return}
+        guard let phone = phoneNumber.text, !phone.isEmpty else {return}
+        guard let emailContact = emailContactTextField.text, !emailContact.isEmpty else {return}
+        guard let currentState = currentStateTextField.text, !currentState.isEmpty else {return}
+        guard let instagram = instagramTextField.text, !instagram.isEmpty else {return}
+        guard let webSite = websiteTextField.text, !webSite.isEmpty else {return}
+        guard let aboutYou = aboutYouTextView.text, !aboutYou.isEmpty else {return}
+        
+//        let dataToSave: [String: Any] = ["name": name, "email": email, "phoneNumber": phone, "currentState": currentState, "socialMedia": instagram, "website": webSite, "email": email]
+//        docRef.setData(dataToSave) { (error) in
+//            if let error = error {
+//                print("Oh no! Got an error: \(error.localizedDescription)")
+//            } else {
+//                print("Data has been saved!")
+//            }
+//        }
         
         if let bio = bio {
             
@@ -265,11 +278,11 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         guard let name = nameTextField.text else { return }
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
-        guard let phoneNumber = phoneNumber.text else { return }
-        guard let currentState = currentStateTextField.text else { return }
-        guard let instagram = instagramTextField.text else { return }
-        guard let website = websiteTextField.text else { return }
-        guard let about = aboutYouTextView.text else { return }
+//        guard let phoneNumber = phoneNumber.text else { return }
+//        guard let currentState = currentStateTextField.text else { return }
+//        guard let instagram = instagramTextField.text else { return }
+//        guard let website = websiteTextField.text else { return }
+//        guard let about = aboutYouTextView.text else { return }
 
         firebaseWrite()
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
@@ -373,13 +386,13 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         var ref: DocumentReference? = nil
             ref = db.collection("users").addDocument(data: [
                 "image" : "/users/profile",
-                "name" : "",
-                "email" : "",
-                "currentState" : "",
-                "phoneNumber" : "",
-                "socialMedia" : "",
-                "website" : "",
-                "aboutYou" : "",
+                "name" : nameTextField.text!,
+                "email" : emailTextField.text!,
+                "currentState" : currentStateTextField.text!,
+                "phoneNumber" : phoneNumber.text!,
+                "socialMedia" : instagramTextField.text!,
+                "website" : websiteTextField.text!,
+                "aboutYou" : aboutYouTextView.text,
                 ]) { err in
                     if let  err = err {
                         print("Error adding document: \(err)")
@@ -399,6 +412,5 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
                 }
             }
     }
-
 }
 
