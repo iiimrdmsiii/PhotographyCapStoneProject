@@ -33,17 +33,7 @@ class PhotographySignInViewController: UIViewController {
     
     // If nothing in TextField, it wont move to next screen and give an alert else has TextField Will move to next screen.
     @IBAction func loginButtonTapped(_ sender: UIButton) {
-        
-//        if let email = userNameTextField.text, let password = passwordTextField.text {
-//            Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-//                if let firebaseError = error {
-//                    print(firebaseError.localizedDescription)
-//                    return
-//                }
-//                print("logged in worked")
-//            }
-//        }
-        
+
         if userNameTextField.text?.isEmpty ?? false || passwordTextField.text?.isEmpty ?? false {
             
             let alert = UIAlertController(title: "Login Alert", message: "Please put in Email or Passward.", preferredStyle: .alert)
@@ -54,20 +44,10 @@ class PhotographySignInViewController: UIViewController {
             
             print("You need to sign in first or enter email and password.")
         } else {
-//            performSegue(withIdentifier: "bioFromLoginSegue", sender: self)
-            
-            
             
             print("It worked!!!")
         }
     }
-    
-//    func presentLoggedInScreen() {
-//
-//        let stroyborad: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//        let photographySignIn: PhotographySignInViewController = stroyborad.instantiateInitialViewController(withIdentifier: "bioFromLoginSegue")
-//        self.present(PhotographySignInViewController, animated: true, completion: nil)
-//    }
     
     //*********************************************************
     // MARK: - Override Methods
@@ -120,120 +100,9 @@ class PhotographySignInViewController: UIViewController {
     
     func resetForm() {
         
-        let alert = UIAlertController(title: "Check your Email or Password", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Double Check", message: "Check your Email or Password", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
         
     }
 }
-
-
-
-
-
-
-
-
-
-//*********************************************************
-// MARK: - Others
-//*********************************************************
-
-
-//        override func viewDidAppear(_ animated: Bool) {
-//            super.viewDidAppear(animated)
-//
-//            if let user = Auth.auth().currentUser {
-//                self.performSegue(withIdentifier: "bioFromLoginSegue", sender: self)
-//            }
-//        }
-
-
-// Login Action
-//if (loginButton.titleLabel?.text == "Logout") {
-//    let preferences = UserDefaults.standard
-//    preferences.removeObject(forKey: "session")
-//
-//    LoginToDo()
-//    return
-//}
-//
-//let username = userNameTextField.text
-//let password = passwordTextField.text
-//
-//if (username == "" || password == "") {
-//    return
-//}
-//DoLogin(username!, password!)
-
-
-// Override
-//let preferences = UserDefaults.standard
-//
-//if (preferences.object(forKey: "session") != nil) {
-//    LoginDone()
-//} else {
-//    LoginToDo()
-//}
-
-//func DoLogin(_ user: String, _ psw: String) {
-//
-//    let url = URL(string: "http://www.kaleidosblog.com/tutorial/login/api/Login")
-//    let session = URLSession.shared
-//
-//    let request = NSMutableURLRequest(url: url!)
-//    request.httpMethod = "Post"
-//
-//    let paramToSend = "username=" + user + "&password=" + psw
-//
-//    request.httpBody = paramToSend.data(using: String.Encoding.utf8)
-//
-//    let task = session.dataTask(with: request as URLRequest, completionHandler: {
-//        (data, response, error) in
-//
-//        guard let _:Data = data else {
-//            return
-//        }
-//
-//        let json: Any?
-//
-//        do {
-//            json = try JSONSerialization.jsonObject(with: data!, options: [])
-//        } catch {
-//            return
-//        }
-//
-//        guard let serverResponse = json as? NSDictionary else {
-//            return
-//        }
-//
-//        if let dataBlock = serverResponse["data"] as? NSDictionary {
-//            if let sessionData = dataBlock ["session"] as? String {
-//                let perferences = UserDefaults.standard
-//                perferences.set(sessionData, forKey: "session")
-//
-//                DispatchQueue.main.async (
-//                    execute: self.LoginDone
-//                )
-//            }
-//        }
-//    })
-//    task.resume()
-//}
-//
-//func LoginToDo() {
-//
-//    userNameTextField.isEnabled = true
-//    passwordTextField.isEnabled = true
-//
-//    loginButton.setTitle("Login", for: .normal)
-//}
-//
-//func LoginDone() {
-//    userNameTextField.isEnabled = false
-//    passwordTextField.isEnabled = false
-//
-//
-//
-//    loginButton.setTitle("Logout", for: .normal)
-//}

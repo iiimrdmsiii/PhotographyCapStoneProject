@@ -98,8 +98,19 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     
     @IBAction func registerButtonTapped(_ sender: Any) {
         
+        if nameTextField.text?.isEmpty ?? false || emailTextField.text?.isEmpty ?? false || passwordTextField.text?.isEmpty ?? false || repeatPasswordTextField.text?.isEmpty ?? false || phoneNumber.text?.isEmpty ?? false || emailContactTextField.text?.isEmpty ?? false || emailContactTextField.text?.isEmpty ?? false || currentStateTextField.text?.isEmpty ?? false || instagramTextField.text?.isEmpty ?? false || websiteTextField.text?.isEmpty ?? false || aboutYouTextView.text?.isEmpty ?? false {
+            
+            let alert = UIAlertController(title: "Warning", message: "Please make sure everything is filled.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            
+            self.present(alert, animated: true, completion: nil)
+            print("Make sure you filled in everything")
+        } else {
+            print("Went to Bio screen!")
+        }
         
         // update
+        
         guard let name = nameTextField.text, !name.isEmpty else {return}
         guard let email = emailTextField.text, !email.isEmpty else {return}
         guard let password = passwordTextField.text, !password.isEmpty else {return}
