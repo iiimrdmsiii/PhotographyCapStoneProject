@@ -86,6 +86,8 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         db = Firestore.firestore()
         
         docRef = db.document("users/profile")
+        
+        firebaseWrite()
 
     }
     
@@ -102,7 +104,9 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         guard let email = emailTextField.text, !email.isEmpty else {return}
         guard let password = passwordTextField.text, !password.isEmpty else {return}
         guard let repeatPassword = repeatPasswordTextField.text, !repeatPassword.isEmpty  else {return}
-        guard let phone = phoneNumber.text, !phone.isEmpty else {return}
+        guard let phone = phoneNumber.text, !phone.isEmpty else {
+            return
+        }
         guard let emailContact = emailContactTextField.text, !emailContact.isEmpty else {return}
         guard let currentState = currentStateTextField.text, !currentState.isEmpty else {return}
         guard let instagram = instagramTextField.text, !instagram.isEmpty else {return}
@@ -278,11 +282,7 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         guard let name = nameTextField.text else { return }
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
-//        guard let phoneNumber = phoneNumber.text else { return }
-//        guard let currentState = currentStateTextField.text else { return }
-//        guard let instagram = instagramTextField.text else { return }
-//        guard let website = websiteTextField.text else { return }
-//        guard let about = aboutYouTextView.text else { return }
+
 
         firebaseWrite()
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
