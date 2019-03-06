@@ -98,6 +98,8 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     
     @IBAction func registerButtonTapped(_ sender: Any) {
         
+        
+        // alert for the TextFields
         if nameTextField.text?.isEmpty ?? false || emailTextField.text?.isEmpty ?? false || passwordTextField.text?.isEmpty ?? false || repeatPasswordTextField.text?.isEmpty ?? false || phoneNumber.text?.isEmpty ?? false || emailContactTextField.text?.isEmpty ?? false || emailContactTextField.text?.isEmpty ?? false || currentStateTextField.text?.isEmpty ?? false || instagramTextField.text?.isEmpty ?? false || websiteTextField.text?.isEmpty ?? false || aboutYouTextView.text?.isEmpty ?? false {
             
             let alert = UIAlertController(title: "Warning", message: "Please make sure everything is filled.", preferredStyle: .alert)
@@ -107,6 +109,22 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
             print("Make sure you filled in everything")
         } else {
             print("Went to Bio screen!")
+        }
+        
+        // alert for the Image
+//        let uploadImage = UIImage(named: "myImage")
+        if imageView.image == nil {
+        let alertImage = UIAlertController(title: "Picture", message: "Please add a photo", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertImage.addAction(action)
+//        action.setValue(uploadImage, forKey: "image")
+        alertImage.popoverPresentationController?.sourceView = sender as? UIView
+        
+        
+            
+        present(alertImage, animated: true, completion: nil)
+//        alertImage.view.addSubview(imageView)
         }
         
         // update

@@ -425,9 +425,6 @@
                                                         <action selector="chooseButtonPhotoTapped:" destination="iox-88-smh" eventType="touchUpInside" id="Epa-Dw-nYq"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t7h-7a-RvF">
-                                                    <rect key="frame" x="110" y="10" width="155" height="119"/>
-                                                </imageView>
                                                 <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First and Last Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="86C-48-urd">
                                                     <rect key="frame" x="20" y="159" width="335" height="30"/>
                                                     <nil key="textColor"/>
@@ -494,6 +491,9 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t7h-7a-RvF">
+                                                    <rect key="frame" x="110" y="10" width="155" height="119"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="86C-48-urd" secondAttribute="trailing" constant="20" id="4iv-IE-RXv"/>
