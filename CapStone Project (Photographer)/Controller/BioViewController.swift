@@ -17,6 +17,7 @@ class BioViewController: UIViewController {
     //*********************************************************
     
     var db: Firestore = Firestore.firestore()
+    let userRef = Firestore.firestore().collection("users")
     
     var bio: Bio? {
         
@@ -147,6 +148,19 @@ class BioViewController: UIViewController {
         }
     }
     
-
-    // Add a new document in collection "Profile"
+    // able to the the document from different files that you make for each individual people that create account.
+    private func getDocument() {
+        
+        let docRef = db.collection("users").document("profile")
+        
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                print("Document data: \(dataDescription)")
+            } else {
+                print("Document does not exist")
+            }
+        }
+        
+    }
 }
