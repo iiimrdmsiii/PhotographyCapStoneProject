@@ -16,7 +16,7 @@ class BioViewController: UIViewController {
     // MARK: - Properties
     //*********************************************************
     
-    var db: Firestore!
+    var db: Firestore = Firestore.firestore()
     
     var bio: Bio? {
         
@@ -78,12 +78,13 @@ class BioViewController: UIViewController {
     
     @IBAction func logoutButtonTapped(_ sender: UIBarButtonItem) {
         
-        do {
-            try Auth.auth().signOut()
-            
-        } catch let signOutError as NSError {
-            print("There's a problem loggiog out, \(signOutError)")
+            try! Auth.auth().signOut()
+        
+        if let storyboard = self.storyboard {
+            let vc = storyboard.instantiateViewController(withIdentifier: "bioFromLoginSegue") as! UINavigationController
+            self.present(vc, animated: true, completion: nil)
         }
+        
         
     }
     //*********************************************************
@@ -111,15 +112,17 @@ class BioViewController: UIViewController {
     // MARK: - Database Cloud Firestore
     //*********************************************************
     
-    // Retrieve data from the firestore
+    // Retrieve data from the firestore and upload onto the iphone screen
     func readArray() {
         
         self.db.collection("users").getDocuments { (snapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
-                for document in snapshot!.documents {
+                // once you add user need to find out how to get that user and put it in
+                let document = snapshot!.documents[0]
                     
+                    let docID = document.documentID
                     let name = document.get("name") as! String
                     let email = document.get("email") as! String
                     let currentState = document.get("currentState") as! String
@@ -127,18 +130,23 @@ class BioViewController: UIViewController {
                     let socialMedia = document.get("socialMedia") as! String
                     let website = document.get("website") as! String
                     let aboutYou = document.get("aboutYou") as! String
-                    print(name, email, currentState, phoneNumber, socialMedia, website, aboutYou)
+                    print(docID, name, email, currentState, phoneNumber, socialMedia, website, aboutYou)
                     
-                }
+                
+                    DispatchQueue.main.async {
+                        self.nameTextField.text = name
+                        self.emailTextField.text = email
+                        self.currentStateTextField.text = currentState
+                        self.phoneNumberTextField.text = phoneNumber
+                        self.socialMediaTextField.text = socialMedia
+                        self.websiteTextField.text = website
+                        self.aboutTextView.text = aboutYou
+                    }
+                
             }
         }
     }
     
 
     // Add a new document in collection "Profile"
-    
-    
-
-    
-    
 }
