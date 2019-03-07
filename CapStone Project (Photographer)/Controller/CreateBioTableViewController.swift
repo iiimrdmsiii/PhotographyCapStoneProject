@@ -86,8 +86,6 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         db = Firestore.firestore()
         
         docRef = db.document("users/profile")
-        
-        firebaseWrite()
 
     }
     
@@ -112,44 +110,29 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         }
         
         // alert for the Image
-//        let uploadImage = UIImage(named: "myImage")
         if imageView.image == nil {
         let alertImage = UIAlertController(title: "Picture", message: "Please add a photo", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alertImage.addAction(action)
-//        action.setValue(uploadImage, forKey: "image")
+
         alertImage.popoverPresentationController?.sourceView = sender as? UIView
         
-        
-            
         present(alertImage, animated: true, completion: nil)
-//        alertImage.view.addSubview(imageView)
         }
         
         // update
-        
         guard let name = nameTextField.text, !name.isEmpty else {return}
         guard let email = emailTextField.text, !email.isEmpty else {return}
         guard let password = passwordTextField.text, !password.isEmpty else {return}
         guard let repeatPassword = repeatPasswordTextField.text, !repeatPassword.isEmpty  else {return}
-        guard let phone = phoneNumber.text, !phone.isEmpty else {
-            return
-        }
+        guard let phone = phoneNumber.text, !phone.isEmpty else {return}
         guard let emailContact = emailContactTextField.text, !emailContact.isEmpty else {return}
         guard let currentState = currentStateTextField.text, !currentState.isEmpty else {return}
         guard let instagram = instagramTextField.text, !instagram.isEmpty else {return}
         guard let webSite = websiteTextField.text, !webSite.isEmpty else {return}
         guard let aboutYou = aboutYouTextView.text, !aboutYou.isEmpty else {return}
-        
-//        let dataToSave: [String: Any] = ["name": name, "email": email, "phoneNumber": phone, "currentState": currentState, "socialMedia": instagram, "website": webSite, "email": email]
-//        docRef.setData(dataToSave) { (error) in
-//            if let error = error {
-//                print("Oh no! Got an error: \(error.localizedDescription)")
-//            } else {
-//                print("Data has been saved!")
-//            }
-//        }
+
         
         if let bio = bio {
             

@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -19,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
-        let db = Firestore.firestore()
+        let _ = Firestore.firestore()
         
         return true
     }

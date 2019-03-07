@@ -16,6 +16,7 @@ class ListPhotographersTableViewController: UITableViewController {
     
     var bio = [Bio]()
     
+    
     //*********************************************************
     // MARK: - Override Methods
     //*********************************************************
