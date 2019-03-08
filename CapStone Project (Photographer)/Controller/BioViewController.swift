@@ -78,14 +78,7 @@ class BioViewController: UIViewController {
     }
     
     @IBAction func logoutButtonTapped(_ sender: UIBarButtonItem) {
-        
-            try! Auth.auth().signOut()
-        
-        if let storyboard = self.storyboard {
-            let vc = storyboard.instantiateViewController(withIdentifier: "bioFromLoginSegue") as! UINavigationController
-            self.present(vc, animated: true, completion: nil)
-        }
-        
+    
         
     }
     //*********************************************************
@@ -95,7 +88,8 @@ class BioViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        readArray()
+        updateUIWithCurrentUserData()
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -114,14 +108,23 @@ class BioViewController: UIViewController {
     //*********************************************************
     
     // Retrieve data from the firestore and upload onto the iphone screen
-    func readArray() {
-        
+    func updateUIWithCurrentUserData() {
+
         self.db.collection("users").getDocuments { (snapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
-                // once you add user need to find out how to get that user and put it in
-                let document = snapshot!.documents[0]
+                var foundDocument: QueryDocumentSnapshot?
+                for doc in snapshot!.documents {
+                    let email = doc.get("email") as! String
+                    if email == Auth.auth().currentUser?.email {
+                        //You found the right document!
+                        foundDocument = doc
+                    }
+                }
+                
+                if let document = foundDocument {
+                    // once you add user need to find out how to get that user and put it in
                     
                     let docID = document.documentID
                     let name = document.get("name") as! String
@@ -132,8 +135,8 @@ class BioViewController: UIViewController {
                     let website = document.get("website") as! String
                     let aboutYou = document.get("aboutYou") as! String
                     print(docID, name, email, currentState, phoneNumber, socialMedia, website, aboutYou)
-                    
-                
+
+
                     DispatchQueue.main.async {
                         self.nameTextField.text = name
                         self.emailTextField.text = email
@@ -143,7 +146,7 @@ class BioViewController: UIViewController {
                         self.websiteTextField.text = website
                         self.aboutTextView.text = aboutYou
                     }
-                
+                }
             }
         }
     }

@@ -79,6 +79,13 @@ class PhotographySignInViewController: UIViewController {
         
         userNameTextField.text = ""
         passwordTextField.text = ""
+        
+        try! Auth.auth().signOut()
+        
+//        if let storyboard = self.storyboard {
+//            let vc = storyboard.instantiateViewController(withIdentifier: "bioFromLoginSegue") as! UINavigationController
+//            self.present(vc, animated: true, completion: nil)
+//        }
     }
     
     // handle the login for username and password to be able to get to the bio

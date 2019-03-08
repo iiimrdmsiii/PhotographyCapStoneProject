@@ -295,7 +295,7 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
 
-
+            // create a account name
         firebaseWrite()
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if error == nil && user != nil {
