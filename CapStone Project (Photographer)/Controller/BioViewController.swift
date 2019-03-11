@@ -16,9 +16,20 @@ class BioViewController: UIViewController {
     // MARK: - Properties
     //*********************************************************
     
+    
     // TextFilds
     var db: Firestore = Firestore.firestore()
     let userRef = Firestore.firestore().collection("users")
+    
+    
+    var localBio: String = ""
+    var localBioName: String = ""
+    var localBioEmail: String = ""
+    var localBioPhoneNumber: String = ""
+    var localBioCurrentState: String = ""
+    var localBioSocialMedia: String = ""
+    var localBioWebsite: String = ""
+    var localBioAboutYou: String = ""
     
     // Image
     var userImageView = UIImageView()
@@ -95,7 +106,22 @@ class BioViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if localBioName != "" {
+            print("not nil!")
+            nameTextField.text = localBioName
+            phoneNumberTextField.text = localBioPhoneNumber
+            emailTextField.text = localBioEmail
+            currentStateTextField.text = localBioCurrentState
+            socialMediaTextField.text = localBioSocialMedia
+            websiteTextField.text = localBioWebsite
+            aboutTextView.text = localBioAboutYou
+        } else {
+            print("is nil :(")
+            print(localBio)
+        }
         updateUIWithCurrentUserData()
+        
+        
         
     }
 
@@ -117,8 +143,6 @@ class BioViewController: UIViewController {
     // Retrieve data from the firestore and upload onto the iphone screen
     func updateUIWithCurrentUserData() {
         
-        
-
         self.db.collection("users").getDocuments { (snapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -144,7 +168,6 @@ class BioViewController: UIViewController {
                     let website = document.get("website") as! String
                     let aboutYou = document.get("aboutYou") as! String
                     print(docID, name, email, currentState, phoneNumber, socialMedia, website, aboutYou)
-
 
                     DispatchQueue.main.async {
                         self.nameTextField.text = name

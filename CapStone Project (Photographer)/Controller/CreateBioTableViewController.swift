@@ -165,14 +165,15 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         guard segue.identifier == "bioFromRegisterSegue" else { return }
         let bioViewController = segue.destination as! BioViewController
         
-        bioViewController.userImageView = imageView
-        bioViewController.nameTextField.text = bio?.name
-        bioViewController.emailTextField.text = bio?.email
-        bioViewController.phoneNumberTextField.text = bio?.number
-        bioViewController.currentStateTextField.text = bio?.currentState
-        bioViewController.socialMediaTextField.text = bio?.instagram
-        bioViewController.websiteTextField.text = bio?.webSite
-        bioViewController.aboutTextView.text = bio?.aboutYou
+        bioViewController.localBioName = nameTextField.text!
+        bioViewController.localBioEmail = emailTextField.text!
+        bioViewController.localBioPhoneNumber = phoneNumber.text!
+        bioViewController.localBioCurrentState = currentStateTextField.text!
+        bioViewController.localBioSocialMedia = instagramTextField.text!
+        bioViewController.localBioWebsite = websiteTextField.text!
+        bioViewController.localBioAboutYou = aboutYouTextView.text!
+        
+        print("bio value we're passing: \(nameTextField.text)")
         
     }
 
