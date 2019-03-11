@@ -16,8 +16,15 @@ class BioViewController: UIViewController {
     // MARK: - Properties
     //*********************************************************
     
+    // TextFilds
     var db: Firestore = Firestore.firestore()
     let userRef = Firestore.firestore().collection("users")
+    
+    // Image
+    var userImageView = UIImageView()
+    let ref = Database.database().reference()
+    let uid = Auth.auth().currentUser?.uid
+    let imageRef = Database.database().reference().child("users/profile")
     
     var bio: Bio? {
         
@@ -109,6 +116,8 @@ class BioViewController: UIViewController {
     
     // Retrieve data from the firestore and upload onto the iphone screen
     func updateUIWithCurrentUserData() {
+        
+        
 
         self.db.collection("users").getDocuments { (snapshot, err) in
             if let err = err {
@@ -151,19 +160,18 @@ class BioViewController: UIViewController {
         }
     }
     
-    // able to the the document from different files that you make for each individual people that create account.
-    private func getDocument() {
-        
-        let docRef = db.collection("users").document("profile")
-        
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                print("Document data: \(dataDescription)")
-            } else {
-                print("Document does not exist")
-            }
-        }
-        
-    }
+//    // able to the the document from different files that you make for each individual people that create account.
+//    private func getDocument() {
+//
+//        let docRef = db.collection("users").document("profile")
+//
+//        docRef.getDocument { (document, error) in
+//            if let document = document, document.exists {
+//                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+//                print("Document data: \(dataDescription)")
+//            } else {
+//                print("Document does not exist")
+//            }
+//        }
+//    }
 }

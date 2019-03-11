@@ -96,7 +96,6 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     
     @IBAction func registerButtonTapped(_ sender: Any) {
         
-        
         // alert for the TextFields
         if nameTextField.text?.isEmpty ?? false || emailTextField.text?.isEmpty ?? false || passwordTextField.text?.isEmpty ?? false || repeatPasswordTextField.text?.isEmpty ?? false || phoneNumber.text?.isEmpty ?? false || emailContactTextField.text?.isEmpty ?? false || emailContactTextField.text?.isEmpty ?? false || currentStateTextField.text?.isEmpty ?? false || instagramTextField.text?.isEmpty ?? false || websiteTextField.text?.isEmpty ?? false || aboutYouTextView.text?.isEmpty ?? false {
             
@@ -154,6 +153,26 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         }
         
         performSegue(withIdentifier: "bioFromRegisterSegue", sender: self)
+        
+        
+    }
+    
+    // passes information to the bio screen
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        
+        guard segue.identifier == "bioFromRegisterSegue" else { return }
+        let bioViewController = segue.destination as! BioViewController
+        
+        bioViewController.userImageView = imageView
+        bioViewController.nameTextField.text = bio?.name
+        bioViewController.emailTextField.text = bio?.email
+        bioViewController.phoneNumberTextField.text = bio?.number
+        bioViewController.currentStateTextField.text = bio?.currentState
+        bioViewController.socialMediaTextField.text = bio?.instagram
+        bioViewController.websiteTextField.text = bio?.webSite
+        bioViewController.aboutTextView.text = bio?.aboutYou
         
     }
 
@@ -337,7 +356,9 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
                 
                 // dismiss the veiw
             } else {
-                self.restForm()
+//                self.restForm()
+                //dismiss the view
+                
             }
         }
     }
