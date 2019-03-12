@@ -86,6 +86,7 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         db = Firestore.firestore()
         
         docRef = db.document("users/profile")
+        
 
     }
     
@@ -164,6 +165,8 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         
         guard segue.identifier == "bioFromRegisterSegue" else { return }
         let bioViewController = segue.destination as! BioViewController
+        
+        bioViewController.userImage = imageView.image
         
         bioViewController.localBioName = nameTextField.text!
         bioViewController.localBioEmail = emailTextField.text!
@@ -357,20 +360,20 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
                 
                 // dismiss the veiw
             } else {
-//                self.restForm()
+                self.restForm()
                 //dismiss the view
                 
             }
         }
     }
     
-    // Upload the image from Firebase
+    // Upload the image to Firebase
     func uploadProfileImage(_ image: UIImage, completion: @escaping ((_ url: URL?) ->())) {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let storageRef = Storage.storage().reference().child("user/\(uid)")
         
-        guard let imageData = image.jpegData(compressionQuality: 0.75) else { return }
+        guard let imageData = image.jpegData(compressionQuality: 0.25) else { return }
         
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpg"
@@ -381,7 +384,7 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
                 
                 // success
                 storageRef.downloadURL { (url, error) in
-                    completion(nil)
+                    completion(url)
                 }
             } else {
                 // fail

@@ -9,6 +9,8 @@
 import UIKit
 import FirebaseAuth
 import Firebase
+import FirebaseStorage
+import FirebaseDatabase
 
 class BioViewController: UIViewController {
     
@@ -31,11 +33,13 @@ class BioViewController: UIViewController {
     var localBioWebsite: String = ""
     var localBioAboutYou: String = ""
     
-    // Image
-    var userImageView = UIImageView()
+    var userImage: UIImage? = UIImage()
+    
+    // retive image from firebase storage.
+    let myImageView = UIImageView()
     let ref = Database.database().reference()
     let uid = Auth.auth().currentUser?.uid
-    let imageRef = Database.database().reference().child("users/profile")
+    let imageRef = Database.database().reference().child("users")
     
     var bio: Bio? {
         
@@ -107,7 +111,11 @@ class BioViewController: UIViewController {
         super.viewDidLoad()
         
         if localBioName != "" {
+            
             print("not nil!")
+            
+            bioImageView.image = userImage
+            
             nameTextField.text = localBioName
             phoneNumberTextField.text = localBioPhoneNumber
             emailTextField.text = localBioEmail
@@ -119,6 +127,7 @@ class BioViewController: UIViewController {
             print("is nil :(")
             print(localBio)
         }
+        
         updateUIWithCurrentUserData()
         
         
@@ -140,6 +149,24 @@ class BioViewController: UIViewController {
     // MARK: - Database Cloud Firestore
     //*********************************************************
     
+    // completion handler o get the image data form your url
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+    
+    // download the image
+    func updateProfileImage(from url: URL) {
+        print("Download Started")
+        getData(from: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            print(response?.suggestedFilename ?? url.lastPathComponent)
+            print("Download Finished")
+            DispatchQueue.main.async() {
+                self.bioImageView.image = UIImage(data: data)
+            }
+        }
+    }
+    
     // Retrieve data from the firestore and upload onto the iphone screen
     func updateUIWithCurrentUserData() {
         
@@ -159,6 +186,11 @@ class BioViewController: UIViewController {
                 if let document = foundDocument {
                     // once you add user need to find out how to get that user and put it in
                     
+                    let image = document.get("imageURL") as! String
+                    
+                    if let imageURL = URL(string: image) {
+                        self.updateProfileImage(from: imageURL)
+                    }
                     let docID = document.documentID
                     let name = document.get("name") as! String
                     let email = document.get("email") as! String
@@ -167,7 +199,7 @@ class BioViewController: UIViewController {
                     let socialMedia = document.get("socialMedia") as! String
                     let website = document.get("website") as! String
                     let aboutYou = document.get("aboutYou") as! String
-                    print(docID, name, email, currentState, phoneNumber, socialMedia, website, aboutYou)
+                    print(docID, image, name, email, currentState, phoneNumber, socialMedia, website, aboutYou)
 
                     DispatchQueue.main.async {
                         self.nameTextField.text = name
@@ -182,19 +214,4 @@ class BioViewController: UIViewController {
             }
         }
     }
-    
-//    // able to the the document from different files that you make for each individual people that create account.
-//    private func getDocument() {
-//
-//        let docRef = db.collection("users").document("profile")
-//
-//        docRef.getDocument { (document, error) in
-//            if let document = document, document.exists {
-//                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-//                print("Document data: \(dataDescription)")
-//            } else {
-//                print("Document does not exist")
-//            }
-//        }
-//    }
 }
