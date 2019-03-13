@@ -39,7 +39,9 @@ class BioViewController: UIViewController {
     let myImageView = UIImageView()
     let ref = Database.database().reference()
     let uid = Auth.auth().currentUser?.uid
-    let imageRef = Database.database().reference().child("users")
+    let imageRef = Database.database().reference().child("user")
+    
+    
     
     var bio: Bio? {
         
@@ -153,7 +155,7 @@ class BioViewController: UIViewController {
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
-    
+
     // download the image
     func updateProfileImage(from url: URL) {
         print("Download Started")
@@ -201,7 +203,10 @@ class BioViewController: UIViewController {
                     let aboutYou = document.get("aboutYou") as! String
                     print(docID, image, name, email, currentState, phoneNumber, socialMedia, website, aboutYou)
 
+                    // Able to print out everything from the firebase cloud FireStore to the phone screen.
                     DispatchQueue.main.async {
+                        
+                        self.bioImageView.image = self.userImage
                         self.nameTextField.text = name
                         self.emailTextField.text = email
                         self.currentStateTextField.text = currentState

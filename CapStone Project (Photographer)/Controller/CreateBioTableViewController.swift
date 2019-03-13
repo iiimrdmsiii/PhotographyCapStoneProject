@@ -319,7 +319,7 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         guard let password = passwordTextField.text else { return }
 
             // create a account name
-        firebaseWrite()
+        
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if error == nil && user != nil {
                 print("User created!")
@@ -328,19 +328,21 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
                 
                 self.uploadProfileImage(image) { url in
                     
-                    if url != nil {
+                    if let url = url {
                         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                         
                         changeRequest?.photoURL = url
                         changeRequest?.displayName = name
                         
+                        // Write the string of the image
+                        self.firebaseWrite(url: url.absoluteString)
                         
                         changeRequest?.commitChanges { error in
                             if error == nil {
                                 print("User display name changed!")
                                 
                                  // save the profile data to Firebase Database
-                                self.saveBioFirebase(profileImageURL: url!) { success in
+                                self.saveBioFirebase(profileImageURL: url) { success in
                                     if success {
                                         self.dismiss(animated: true, completion: nil)
                                     } else {
@@ -382,6 +384,8 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         storageRef.putData(imageData, metadata: metaData) { (metaData, error) in
             if error == nil, metaData != nil {
                 
+       
+                
                 // success
                 storageRef.downloadURL { (url, error) in
                     completion(url)
@@ -418,11 +422,11 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     }
     
     // Add a new document with a generated ID
-    
-    private func firebaseWrite() {
+    // url String helps with creating a string for the image to have a place that the image can me saved.
+    private func firebaseWrite(url: String) {
         var ref: DocumentReference? = nil
             ref = db.collection("users").addDocument(data: [
-                "image" : "/users/profile",
+                "imageURL" : url,
                 "name" : nameTextField.text!,
                 "email" : emailTextField.text!,
                 "currentState" : currentStateTextField.text!,
