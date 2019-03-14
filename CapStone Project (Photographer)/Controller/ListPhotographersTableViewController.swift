@@ -16,6 +16,7 @@ class ListPhotographersTableViewController: UITableViewController {
     
     var bio = [Bio]()
   
+    // this is the bucket to contain water.
     var userType: UserType?
     
     
@@ -69,16 +70,20 @@ class ListPhotographersTableViewController: UITableViewController {
         guard let bioVC = segue.destination as? BioViewController,
             let seletedRow = tableView.indexPathForSelectedRow?.row else { return }        
         
-        bioVC.loadViewIfNeeded()
         let bio = BioController.shareController.bios[seletedRow]
         
-        if segue.identifier == "bioSegue" {
+        // This is the Water that needs to find the bucket on the next file.
+        if segue.identifier == "bioSegue", let bioViewController = segue.destination as? BioViewController {
+            bioViewController.userType = .customer
+            bioVC.loadViewIfNeeded()
+
             bioVC.bio = bio
-            
+
             bioVC.logoutButton.isEnabled = false
             bioVC.editButton.isHidden = true
             bioVC.saveButton?.title = "Back"
             bioVC.logoutButton?.title = ""
+            
             
         }
     }

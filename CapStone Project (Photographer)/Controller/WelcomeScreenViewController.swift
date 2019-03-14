@@ -39,18 +39,17 @@ class WelcomeScreenViewController: UIViewController {
         performSegue(withIdentifier: "customerSegue", sender: sender)
     }
     
+    // Helps navitgate where the customer goes. (Water)
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "customerSegue" {
-            let listPhotographersTableViewController = segue.destination as? ListPhotographersTableViewController
-            if let _ = userType {
-                listPhotographersTableViewController!.userType = .customer
-            }
+        if segue.identifier == "customerSegue", let listPhotographersTableViewController = segue.destination as? ListPhotographersTableViewController {
+                listPhotographersTableViewController.userType = .customer
         }
     }
     
     @IBAction func photographerButtonTapped(_ sender: Any) {
         performSegue(withIdentifier: "photographerSegue", sender: sender)
     }
+    
     
 
     

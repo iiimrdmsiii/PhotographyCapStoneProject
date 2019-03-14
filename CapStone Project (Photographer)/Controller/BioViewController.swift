@@ -18,12 +18,12 @@ class BioViewController: UIViewController {
     // MARK: - Properties
     //*********************************************************
     
-//    var userType: UserType
+    // this is the bucket that can contain water.
+    var userType: UserType?
     
     // TextFilds
     var db: Firestore = Firestore.firestore()
     let userRef = Firestore.firestore().collection("users")
-    
     
     var localBio: String = ""
     var localBioName: String = ""
@@ -41,11 +41,6 @@ class BioViewController: UIViewController {
     let ref = Database.database().reference()
     let uid = Auth.auth().currentUser?.uid
     let imageRef = Database.database().reference().child("user")
-    
-    // Customers
-    
-    
-    
     
     var bio: Bio? {
         
@@ -85,16 +80,23 @@ class BioViewController: UIViewController {
     
     @IBAction func saveBarButtonTapped(_ sender: UIBarButtonItem) {
         
-        let name = nameTextField.text ?? ""
-        let number = phoneNumberTextField.text ?? ""
-        let email = emailTextField.text ?? ""
-        let currentState = currentStateTextField.text ?? ""
-        let socialMedia = socialMediaTextField.text ?? ""
-        let website = websiteTextField.text ?? ""
-        let about = aboutTextView.text ?? ""
         
-        
-        bio = Bio(name: name, number: number , email: email, currentState: currentState, instagram: socialMedia, webSite: website, aboutYou: about, password: "")
+        if userType == UserType.photographer {
+            let name = nameTextField.text ?? ""
+            let number = phoneNumberTextField.text ?? ""
+            let email = emailTextField.text ?? ""
+            let currentState = currentStateTextField.text ?? ""
+            let socialMedia = socialMediaTextField.text ?? ""
+            let website = websiteTextField.text ?? ""
+            let about = aboutTextView.text ?? ""
+            
+            
+            bio = Bio(name: name, number: number , email: email, currentState: currentState, instagram: socialMedia, webSite: website, aboutYou: about, password: "")
+        } else if userType == UserType.customer {
+            self.navigationController?.popViewController(animated: true)
+            
+        }
+
         
     }
 
@@ -120,7 +122,16 @@ class BioViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if userType == UserType.customer {
+            nameTextField.isUserInteractionEnabled = false
+            phoneNumberTextField.isUserInteractionEnabled = false
+            emailTextField.isUserInteractionEnabled = false
+            currentStateTextField.isUserInteractionEnabled = false
+            socialMediaTextField.isUserInteractionEnabled = false
+            websiteTextField.isUserInteractionEnabled = false
+            aboutTextView.isUserInteractionEnabled = false
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backBarItem))
+        }
         if localBioName != "" {
             
             print("not nil!")
@@ -141,14 +152,11 @@ class BioViewController: UIViewController {
         
         updateUIWithCurrentUserData()
         
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backBarItem))
-        
-        
      
     }
     
     @objc func backBarItem() {
-        dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
   
     }
 
