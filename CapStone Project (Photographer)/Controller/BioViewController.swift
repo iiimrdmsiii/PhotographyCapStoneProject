@@ -18,6 +18,7 @@ class BioViewController: UIViewController {
     // MARK: - Properties
     //*********************************************************
     
+//    var userType: UserType
     
     // TextFilds
     var db: Firestore = Firestore.firestore()
@@ -41,6 +42,9 @@ class BioViewController: UIViewController {
     let uid = Auth.auth().currentUser?.uid
     let imageRef = Database.database().reference().child("user")
     
+    // Customers
+    
+    
     
     
     var bio: Bio? {
@@ -49,6 +53,9 @@ class BioViewController: UIViewController {
             guard let bio = bio else { return }
             
             //if isCustomer is true then hide the buttons so the view works for customers
+            
+         
+            
             //if isCustomer is false then dont do anything, the view was already designed for photographers
 //            updateView(with: bio.isCustomer)
 //            bio.isCustomer
@@ -69,6 +76,8 @@ class BioViewController: UIViewController {
     @IBOutlet weak var websiteTextField: UITextField!
     @IBOutlet weak var aboutTextView: UITextView!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var logoutButton: UIBarButtonItem!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     //*********************************************************
     // MARK: - Actions
@@ -132,8 +141,15 @@ class BioViewController: UIViewController {
         
         updateUIWithCurrentUserData()
         
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backBarItem))
         
         
+     
+    }
+    
+    @objc func backBarItem() {
+        dismiss(animated: true, completion: nil)
+  
     }
 
     override func viewWillAppear(_ animated: Bool) {

@@ -29,7 +29,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="1PD-1R-2Jg" kind="show" id="F8M-1p-Qzj"/>
+                                    <action selector="customerButtonTapped:" destination="agc-Rs-ph3" eventType="touchUpInside" id="fjh-zs-nqQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eB7-cN-vfg">
@@ -40,7 +40,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Ovn-pC-3Sx" kind="show" identifier="PhotographerSegueAccount" id="pyh-yY-Sfa"/>
+                                    <action selector="photographerButtonTapped:" destination="agc-Rs-ph3" eventType="touchUpInside" id="Vuh-nL-5Y5"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -63,6 +63,8 @@
                     <connections>
                         <outlet property="customerButton" destination="Rde-qR-Jv4" id="XTW-MP-te1"/>
                         <outlet property="photographerButton" destination="eB7-cN-vfg" id="VEc-VN-sxA"/>
+                        <segue destination="1PD-1R-2Jg" kind="show" identifier="customerSegue" id="LGn-In-FcR"/>
+                        <segue destination="Ovn-pC-3Sx" kind="show" identifier="photographerSegue" id="4xJ-kk-DGI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H95-fB-YqN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -90,18 +92,18 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lfv-55-S5N">
-                                            <rect key="frame" x="0.0" y="0.0" width="77" height="69.5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="77" id="Fsl-Pq-6ol"/>
-                                            </constraints>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHn-QO-wom">
                                             <rect key="frame" x="85" y="19" width="274" height="32"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lfv-55-S5N">
+                                            <rect key="frame" x="0.0" y="0.0" width="77" height="69.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="77" id="Fsl-Pq-6ol"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="oHn-QO-wom" secondAttribute="trailing" id="DRI-z3-b1r"/>
@@ -291,7 +293,7 @@
                         <viewLayoutGuide key="safeArea" id="Spi-q2-vjn"/>
                     </view>
                     <navigationItem key="navigationItem" title="Bio" id="ySJ-pd-b8B">
-                        <barButtonItem key="leftBarButtonItem" systemItem="save" id="9C6-RU-eKX">
+                        <barButtonItem key="leftBarButtonItem" title="Save" id="9C6-RU-eKX">
                             <connections>
                                 <action selector="saveBarButtonTapped:" destination="gZv-qS-7Mf" id="38Y-DO-GaH"/>
                             </connections>
@@ -310,8 +312,10 @@
                         <outlet property="currentStateTextField" destination="UG2-UO-aB7" id="gcn-PS-KOc"/>
                         <outlet property="editButton" destination="peW-dX-n3I" id="9ew-tR-cZe"/>
                         <outlet property="emailTextField" destination="rR0-7m-YKk" id="yeB-8D-n6C"/>
+                        <outlet property="logoutButton" destination="LTy-pP-PII" id="jfY-dy-y3V"/>
                         <outlet property="nameTextField" destination="QoF-ye-qpI" id="hjC-rB-LHJ"/>
                         <outlet property="phoneNumberTextField" destination="QQx-Ak-1qG" id="V9r-b4-Mbk"/>
+                        <outlet property="saveButton" destination="9C6-RU-eKX" id="xEF-8e-6b3"/>
                         <outlet property="socialMediaTextField" destination="sQH-xv-ilc" id="Csr-KB-3zg"/>
                         <outlet property="websiteTextField" destination="Esu-81-EI7" id="hbC-aa-5jk"/>
                     </connections>
@@ -319,7 +323,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="368-ID-HNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="rAh-Kx-oQr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1447" y="1212"/>
+            <point key="canvasLocation" x="1446" y="1212"/>
         </scene>
         <!--Photography Sign In View Controller-->
         <scene sceneID="yAk-r9-b7i">

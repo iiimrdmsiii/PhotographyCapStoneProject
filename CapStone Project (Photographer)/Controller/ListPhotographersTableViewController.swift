@@ -15,6 +15,10 @@ class ListPhotographersTableViewController: UITableViewController {
     //*********************************************************
     
     var bio = [Bio]()
+  
+    var userType: UserType?
+    
+    
     
     
     //*********************************************************
@@ -30,6 +34,8 @@ class ListPhotographersTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
     }
 
@@ -61,14 +67,19 @@ class ListPhotographersTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let bioVC = segue.destination as? BioViewController,
-            let seletedRow = tableView.indexPathForSelectedRow?.row else { return }
-        
+            let seletedRow = tableView.indexPathForSelectedRow?.row else { return }        
         
         bioVC.loadViewIfNeeded()
         let bio = BioController.shareController.bios[seletedRow]
         
         if segue.identifier == "bioSegue" {
             bioVC.bio = bio
+            
+            bioVC.logoutButton.isEnabled = false
+            bioVC.editButton.isHidden = true
+            bioVC.saveButton?.title = "Back"
+            bioVC.logoutButton?.title = ""
+            
         }
     }
 }

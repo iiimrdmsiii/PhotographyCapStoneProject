@@ -8,8 +8,14 @@
 
 import UIKit
 
+enum UserType {
+    case customer
+    case photographer
+}
+
 class WelcomeScreenViewController: UIViewController {
     
+    var userType: UserType?
     
     //*********************************************************
     // MARK: - Outlets
@@ -23,6 +29,27 @@ class WelcomeScreenViewController: UIViewController {
         // Round Corners
         self.customerButton.layer.cornerRadius = 30
         self.photographerButton.layer.cornerRadius = 30
+    }
+    
+    //*********************************************************
+    // MARK: - Actions
+    //*********************************************************
+    
+    @IBAction func customerButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "customerSegue", sender: sender)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "customerSegue" {
+            let listPhotographersTableViewController = segue.destination as? ListPhotographersTableViewController
+            if let _ = userType {
+                listPhotographersTableViewController!.userType = .customer
+            }
+        }
+    }
+    
+    @IBAction func photographerButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "photographerSegue", sender: sender)
     }
     
 
