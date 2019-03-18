@@ -153,7 +153,7 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
             
         }
         
-        performSegue(withIdentifier: "bioFromRegisterSegue", sender: self)
+//        performSegue(withIdentifier: "bioFromRegisterSegue", sender: self)
         
         
     }
@@ -400,15 +400,23 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
     // save the image on to firebase.
     func saveBioFirebase(profileImageURL: URL, completion: @escaping ((_ success: Bool) -> ())) {
         print("saveBioFirebase func")
-        guard let uid = Auth.auth().currentUser?.uid else {return}
-        let databaseRef = Database.database().reference().child("users/profile/\(uid)")
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let databaseRef = Firestore.firestore().document("users/\(uid)")
         
         let userObject = [
-            "photoURL": profileImageURL.absoluteString
+            "imageURL": profileImageURL.absoluteString,
+            "name" : nameTextField.text!,
+            "email" : emailTextField.text!,
+            "currentState" : currentStateTextField.text!,
+            "phoneNumber" : phoneNumber.text!,
+            "socialMedia" : instagramTextField.text!,
+            "website" : websiteTextField.text!,
+            "aboutYou" : aboutYouTextView.text
             ] as [String:Any]
-        
-        databaseRef.setValue(userObject) { error, ref in
+
+        databaseRef.setData(userObject) { (error) in
             completion(error == nil)
+            self.performSegue(withIdentifier: "bioFromRegisterSegue", sender: self)
         }
     }
     

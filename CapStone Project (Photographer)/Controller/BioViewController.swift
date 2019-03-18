@@ -46,14 +46,6 @@ class BioViewController: UIViewController {
         
         didSet {
             guard let bio = bio else { return }
-            
-            //if isCustomer is true then hide the buttons so the view works for customers
-            
-         
-            
-            //if isCustomer is false then dont do anything, the view was already designed for photographers
-//            updateView(with: bio.isCustomer)
-//            bio.isCustomer
             updateView(with: bio)
         }
     }
@@ -90,18 +82,20 @@ class BioViewController: UIViewController {
             let website = websiteTextField.text ?? ""
             let about = aboutTextView.text ?? ""
             
-            
             bio = Bio(name: name, number: number , email: email, currentState: currentState, instagram: socialMedia, webSite: website, aboutYou: about, password: "")
+            
+            let alert = UIAlertController(title: "Updated", message: "You've updated your bio.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+            
         } else if userType == UserType.customer {
             self.navigationController?.popViewController(animated: true)
-            
         }
-
-        
     }
 
-    
     func updateView(with bio: Bio) {
+        bioImageView.image = userImage
         nameTextField.text = bio.name
         emailTextField.text = bio.email
         phoneNumberTextField.text = bio.number
@@ -113,8 +107,6 @@ class BioViewController: UIViewController {
     }
     
     @IBAction func logoutButtonTapped(_ sender: UIBarButtonItem) {
-    
-        
     }
     //*********************************************************
     // MARK: - Override Methods
@@ -122,6 +114,7 @@ class BioViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if userType == UserType.customer {
             nameTextField.isUserInteractionEnabled = false
             phoneNumberTextField.isUserInteractionEnabled = false
@@ -132,27 +125,28 @@ class BioViewController: UIViewController {
             aboutTextView.isUserInteractionEnabled = false
             navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backBarItem))
         }
-        if localBioName != "" {
-            
-            print("not nil!")
-            
-            bioImageView.image = userImage
-            
-            nameTextField.text = localBioName
-            phoneNumberTextField.text = localBioPhoneNumber
-            emailTextField.text = localBioEmail
-            currentStateTextField.text = localBioCurrentState
-            socialMediaTextField.text = localBioSocialMedia
-            websiteTextField.text = localBioWebsite
-            aboutTextView.text = localBioAboutYou
-        } else {
-            print("is nil :(")
-            print(localBio)
-        }
+        
+//        if localBioName != "" {
+//
+//            print("not nil!")
+//
+//            bioImageView.image = userImage
+//
+//            nameTextField.text = localBioName
+//            phoneNumberTextField.text = localBioPhoneNumber
+//            emailTextField.text = localBioEmail
+//            currentStateTextField.text = localBioCurrentState
+//            socialMediaTextField.text = localBioSocialMedia
+//            websiteTextField.text = localBioWebsite
+//            aboutTextView.text = localBioAboutYou
+//        } else {
+//            print("is nil :(")
+//            print(localBio)
+//        }
+        
+        
         
         updateUIWithCurrentUserData()
-        
-     
     }
     
     @objc func backBarItem() {
@@ -175,7 +169,7 @@ class BioViewController: UIViewController {
     // MARK: - Database Cloud Firestore
     //*********************************************************
     
-    // completion handler o get the image data form your url
+    // completion handler to get the image data form your url
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
@@ -195,52 +189,27 @@ class BioViewController: UIViewController {
     
     // Retrieve data from the firestore and upload onto the iphone screen
     func updateUIWithCurrentUserData() {
-        
-        self.db.collection("users").getDocuments { (snapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                var foundDocument: QueryDocumentSnapshot?
-                for doc in snapshot!.documents {
-                    let email = doc.get("email") as! String
-                    if email == Auth.auth().currentUser?.email {
-                        //You found the right document!
-                        foundDocument = doc
-                    }
-                }
-                
-                if let document = foundDocument {
-                    // once you add user need to find out how to get that user and put it in
-                    
-                    let image = document.get("imageURL") as! String
-                    
-                    if let imageURL = URL(string: image) {
-                        self.updateProfileImage(from: imageURL)
-                    }
-                    let docID = document.documentID
-                    let name = document.get("name") as! String
-                    let email = document.get("email") as! String
-                    let currentState = document.get("currentState") as! String
-                    let phoneNumber = document.get("phoneNumber") as! String
-                    let socialMedia = document.get("socialMedia") as! String
-                    let website = document.get("website") as! String
-                    let aboutYou = document.get("aboutYou") as! String
-                    print(docID, image, name, email, currentState, phoneNumber, socialMedia, website, aboutYou)
 
-                    // Able to print out everything from the firebase cloud FireStore to the phone screen.
-                    DispatchQueue.main.async {
-                        
-                        self.bioImageView.image = self.userImage
-                        self.nameTextField.text = name
-                        self.emailTextField.text = email
-                        self.currentStateTextField.text = currentState
-                        self.phoneNumberTextField.text = phoneNumber
-                        self.socialMediaTextField.text = socialMedia
-                        self.websiteTextField.text = website
-                        self.aboutTextView.text = aboutYou
-                    }
-                }
+        
+        // Queries FireStore to get ALL of the users
+        self.db.collection("users").getDocuments { (snapshot, error) in
+            guard let documents = snapshot?.documents else { return }
+            // Loops through each user to find one document for each user
+            for document in documents {
+                // Access to the user
+                
+                self.bioImageView.image = self.userImage
+                document.get("name")
+                document.get("email")
+                document.get("phoneNumber")
+                document.get("currentState")
+                document.get("website")
+                document.get("aboutYou")
+                document.get("socialMedia")
+                
+                
             }
         }
     }
 }
+
