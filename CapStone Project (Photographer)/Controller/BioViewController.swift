@@ -40,7 +40,7 @@ class BioViewController: UIViewController {
     let myImageView = UIImageView()
     let ref = Database.database().reference()
     let uid = Auth.auth().currentUser?.uid
-    let imageRef = Database.database().reference().child("user")
+    let imageRef = Database.database().reference().child("imageURL")
     
     var bio: Bio? {
         
@@ -115,6 +115,8 @@ class BioViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        updateUIWithCurrentUserData()
+        
         if userType == UserType.customer {
             nameTextField.isUserInteractionEnabled = false
             phoneNumberTextField.isUserInteractionEnabled = false
@@ -125,28 +127,6 @@ class BioViewController: UIViewController {
             aboutTextView.isUserInteractionEnabled = false
             navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backBarItem))
         }
-        
-//        if localBioName != "" {
-//
-//            print("not nil!")
-//
-//            bioImageView.image = userImage
-//
-//            nameTextField.text = localBioName
-//            phoneNumberTextField.text = localBioPhoneNumber
-//            emailTextField.text = localBioEmail
-//            currentStateTextField.text = localBioCurrentState
-//            socialMediaTextField.text = localBioSocialMedia
-//            websiteTextField.text = localBioWebsite
-//            aboutTextView.text = localBioAboutYou
-//        } else {
-//            print("is nil :(")
-//            print(localBio)
-//        }
-        
-        
-        
-        updateUIWithCurrentUserData()
     }
     
     @objc func backBarItem() {
@@ -198,8 +178,8 @@ class BioViewController: UIViewController {
             for document in documents {
                 // Access to the user
                 
-                self.bioImageView.image = self.userImage
                 document.get("name")
+                document.get("user")
                 document.get("email")
                 document.get("phoneNumber")
                 document.get("currentState")

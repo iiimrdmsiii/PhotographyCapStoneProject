@@ -85,7 +85,7 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         
         db = Firestore.firestore()
         
-        docRef = db.document("users/profile")
+        docRef = db.document("users/profile/")
         
 
     }
@@ -136,6 +136,7 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         
         if let bio = bio {
             
+            
             bio.name = name
             bio.email = email
             bio.password = password
@@ -152,15 +153,10 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
             BioController.shareController.createBio(name: name, number: phone, email: email, currentState: currentState, instagram: instagram, webSite: webSite, aboutYou: aboutYou, password: password)
             
         }
-        
-//        performSegue(withIdentifier: "bioFromRegisterSegue", sender: self)
-        
-        
     }
     
     // passes information to the bio screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         super.prepare(for: segue, sender: sender)
         
         guard segue.identifier == "bioFromRegisterSegue" else { return }
@@ -397,9 +393,9 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         }
     }
     
-    // save the image on to firebase.
+    // save the image and informations in to firebase.
     func saveBioFirebase(profileImageURL: URL, completion: @escaping ((_ success: Bool) -> ())) {
-        print("saveBioFirebase func")
+        print("saveBioFirebase Yay, way to go!!!!!")
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let databaseRef = Firestore.firestore().document("users/\(uid)")
         
