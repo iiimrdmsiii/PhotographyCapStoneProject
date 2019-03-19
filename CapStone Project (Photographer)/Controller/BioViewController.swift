@@ -18,6 +18,15 @@ class BioViewController: UIViewController {
     // MARK: - Properties
     //*********************************************************
     
+    var bioRetrive: Bio? {
+        
+        didSet {
+            updateUIWithCurrentUserData()
+        }
+    }
+        
+    
+    
     // this is the bucket that can contain water.
     var userType: UserType?
     
@@ -42,14 +51,6 @@ class BioViewController: UIViewController {
     let uid = Auth.auth().currentUser?.uid
     let imageRef = Database.database().reference().child("imageURL")
     
-    var bio: Bio? {
-        
-        didSet {
-            guard let bio = bio else { return }
-            updateView(with: bio)
-        }
-    }
-    
     //*********************************************************
     // MARK: - Outlets
     //*********************************************************
@@ -73,38 +74,27 @@ class BioViewController: UIViewController {
     @IBAction func saveBarButtonTapped(_ sender: UIBarButtonItem) {
         
         
-        if userType == UserType.photographer {
-            let name = nameTextField.text ?? ""
-            let number = phoneNumberTextField.text ?? ""
-            let email = emailTextField.text ?? ""
-            let currentState = currentStateTextField.text ?? ""
-            let socialMedia = socialMediaTextField.text ?? ""
-            let website = websiteTextField.text ?? ""
-            let about = aboutTextView.text ?? ""
-            
-            bio = Bio(name: name, number: number , email: email, currentState: currentState, instagram: socialMedia, webSite: website, aboutYou: about, password: "")
-            
-            let alert = UIAlertController(title: "Updated", message: "You've updated your bio.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            
-            
-        } else if userType == UserType.customer {
-            self.navigationController?.popViewController(animated: true)
-        }
+//        if userType == UserType.photographer {
+//            let name = nameTextField.text ?? ""
+//            let number = phoneNumberTextField.text ?? ""
+//            let email = emailTextField.text ?? ""
+//            let currentState = currentStateTextField.text ?? ""
+//            let socialMedia = socialMediaTextField.text ?? ""
+//            let website = websiteTextField.text ?? ""
+//            let about = aboutTextView.text ?? ""
+//            
+//            bio = Bio(name: name, number: number , email: email, currentState: currentState, instagram: socialMedia, webSite: website, aboutYou: about, password: "")
+//            
+//            let alert = UIAlertController(title: "Updated", message: "You've updated your bio.", preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+//            self.present(alert, animated: true, completion: nil)
+//            
+//            
+//        } else if userType == UserType.customer {
+//            self.navigationController?.popViewController(animated: true)
+//        }
     }
 
-    func updateView(with bio: Bio) {
-        bioImageView.image = userImage
-        nameTextField.text = bio.name
-        emailTextField.text = bio.email
-        phoneNumberTextField.text = bio.number
-        emailTextField.text = bio.email
-        currentStateTextField.text = bio.currentState
-        socialMediaTextField.text = bio.instagram
-        websiteTextField.text = bio.webSite
-        aboutTextView.text = bio.aboutYou
-    }
     
     @IBAction func logoutButtonTapped(_ sender: UIBarButtonItem) {
     }
@@ -133,17 +123,6 @@ class BioViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
   
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if let photographerIndex = BioController.shareController.photographerThatJustRegistered {
-            let bio = BioController.shareController.bios[photographerIndex]
-            updateView(with: bio)
-        }
-    }
-    
-
     
     //*********************************************************
     // MARK: - Database Cloud Firestore
@@ -170,26 +149,47 @@ class BioViewController: UIViewController {
     // Retrieve data from the firestore and upload onto the iphone screen
     func updateUIWithCurrentUserData() {
 
-        
-        // Queries FireStore to get ALL of the users
-        self.db.collection("users").getDocuments { (snapshot, error) in
-            guard let documents = snapshot?.documents else { return }
-            // Loops through each user to find one document for each user
-            for document in documents {
-                // Access to the user
+        if let bio  = bioRetrive {
+            nameTextField.text = bio.name
+            emailTextField.text = bio.email
+            phoneNumberTextField.text = bio.number
+            currentStateTextField.text = bio.currentState
+            websiteTextField.text = bio.webSite
+            aboutTextView.text = bio.aboutYou
+            socialMediaTextField.text = bio.instagram
+            
+            if let url = URL(string: bio.image) {
                 
-                document.get("name")
-                document.get("user")
-                document.get("email")
-                document.get("phoneNumber")
-                document.get("currentState")
-                document.get("website")
-                document.get("aboutYou")
-                document.get("socialMedia")
-                
+                self.updateProfileImage(from: url)
                 
             }
         }
     }
+        
+//        // Queries FireStore to get ALL of the users
+//        self.db.collection("users").getDocuments { (snapshot, error) in
+//            guard let documents = snapshot?.documents else { return }
+//            // Loops through each user to find one document for each user
+//            for document in documents {
+//                // Access to the user
+//
+//
+//                document.get("user")
+//                guard let imageURL = bioRetrive.image as? String else {return}
+//                self.nameTextField.text =  document.get("name") as? String
+//                self.emailTextField.text =  document.get("email") as? String
+//                self.phoneNumberTextField.text =  document.get("phoneNumber") as? String
+//                self.currentStateTextField.text =  document.get("currentState") as? String
+//                self.websiteTextField.text =  document.get("website") as? String
+//                self.aboutTextView.text =  document.get("aboutYou") as? String
+//                self.socialMediaTextField.text =  document.get("socialMedia") as? String
+//                if let url = URL(string: imageURL) {
+//
+//                self.updateProfileImage(from: url)
+//
+//                }
+//            }
+//        }
+//    }
 }
 

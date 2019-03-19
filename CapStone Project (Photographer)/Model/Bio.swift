@@ -9,11 +9,22 @@
 import Foundation
 import CoreData
 
-extension Bio {
+struct Bio {
     
-    convenience init?(name: String, number: String, email: String, currentState: String, instagram: String, webSite: String, aboutYou: String, password: String, context: NSManagedObjectContext = Stack.context) {
+    var name: String
+    var number: String
+    var email: String
+    var currentState: String
+    var instagram: String
+    var webSite: String
+    var aboutYou: String
+    var password: String
+    var dateOfBirth: Date
+    var image: String
+    
+    init?(name: String, number: String, email: String, currentState: String, instagram: String, webSite: String, aboutYou: String, password: String, image: String) {
         
-        self.init(context: context)
+        
         self.name = name
         self.number = number
         self.email = email
@@ -23,6 +34,7 @@ extension Bio {
         self.aboutYou = aboutYou
         self.password = password
         self.dateOfBirth = Date()
+        self.image = image
         
     }
     

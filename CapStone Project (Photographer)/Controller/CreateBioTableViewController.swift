@@ -122,37 +122,16 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         }
         
         // update
-        guard let name = nameTextField.text, !name.isEmpty else {return}
-        guard let email = emailTextField.text, !email.isEmpty else {return}
-        guard let password = passwordTextField.text, !password.isEmpty else {return}
-        guard let repeatPassword = repeatPasswordTextField.text, !repeatPassword.isEmpty  else {return}
-        guard let phone = phoneNumber.text, !phone.isEmpty else {return}
-        guard let emailContact = emailContactTextField.text, !emailContact.isEmpty else {return}
-        guard let currentState = currentStateTextField.text, !currentState.isEmpty else {return}
-        guard let instagram = instagramTextField.text, !instagram.isEmpty else {return}
-        guard let webSite = websiteTextField.text, !webSite.isEmpty else {return}
-        guard let aboutYou = aboutYouTextView.text, !aboutYou.isEmpty else {return}
-
-        
-        if let bio = bio {
-            
-            
-            bio.name = name
-            bio.email = email
-            bio.password = password
-            bio.password = repeatPassword
-            bio.number = phone
-            bio.email = emailContact
-            bio.currentState = currentState
-            bio.instagram = instagram
-            bio.webSite = webSite
-            bio.aboutYou = aboutYou
-    
-        } else {
-            // create
-            BioController.shareController.createBio(name: name, number: phone, email: email, currentState: currentState, instagram: instagram, webSite: webSite, aboutYou: aboutYou, password: password)
-            
-        }
+        guard let name = nameTextField.text, !name.isEmpty,
+         let email = emailTextField.text, !email.isEmpty,
+         let password = passwordTextField.text, !password.isEmpty,
+         let repeatPassword = repeatPasswordTextField.text, !repeatPassword.isEmpty,
+         let phone = phoneNumber.text, !phone.isEmpty,
+         let emailContact = emailContactTextField.text, !emailContact.isEmpty,
+         let currentState = currentStateTextField.text, !currentState.isEmpty,
+         let instagram = instagramTextField.text, !instagram.isEmpty,
+         let webSite = websiteTextField.text, !webSite.isEmpty,
+         let aboutYou = aboutYouTextView.text, !aboutYou.isEmpty else {return}
     }
     
     // passes information to the bio screen

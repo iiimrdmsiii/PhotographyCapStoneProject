@@ -15,18 +15,13 @@
 		F50ADB14220C8A6D009B57F0 /* PhotographySignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50ADB13220C8A6D009B57F0 /* PhotographySignInViewController.swift */; };
 		F50ADB16220C8ABD009B57F0 /* CreateBioTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50ADB15220C8ABD009B57F0 /* CreateBioTableViewController.swift */; };
 		F50ADB18220C8AF3009B57F0 /* ListPhotographersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50ADB17220C8AF3009B57F0 /* ListPhotographersTableViewController.swift */; };
-		F511E64C2229932B004923C3 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F511E64A2229932B004923C3 /* PostTableViewCell.swift */; };
-		F511E64D2229932B004923C3 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F511E64B2229932B004923C3 /* PostTableViewCell.xib */; };
-		F531D59C2211D2D000AB5D8D /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F531D59B2211D2D000AB5D8D /* Stack.swift */; };
 		F531D59E2211D48100AB5D8D /* Bio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F531D59D2211D48100AB5D8D /* Bio.swift */; };
-		F531D5A02211D84D00AB5D8D /* BioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F531D59F2211D84D00AB5D8D /* BioController.swift */; };
 		F531D5A22213325A00AB5D8D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F531D5A12213325A00AB5D8D /* GoogleService-Info.plist */; };
 		F58602262215BE0A007F7F3C /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58602252215BE0A007F7F3C /* Image.swift */; };
 		F5FE67652208A3B100E42133 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FE67642208A3B100E42133 /* AppDelegate.swift */; };
 		F5FE676A2208A3B100E42133 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5FE67682208A3B100E42133 /* Main.storyboard */; };
 		F5FE676C2208A3B500E42133 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5FE676B2208A3B500E42133 /* Assets.xcassets */; };
 		F5FE676F2208A3B500E42133 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5FE676D2208A3B500E42133 /* LaunchScreen.storyboard */; };
-		F5FE67782208A64300E42133 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5FE67762208A64300E42133 /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,11 +35,7 @@
 		F50ADB13220C8A6D009B57F0 /* PhotographySignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotographySignInViewController.swift; sourceTree = "<group>"; };
 		F50ADB15220C8ABD009B57F0 /* CreateBioTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBioTableViewController.swift; sourceTree = "<group>"; };
 		F50ADB17220C8AF3009B57F0 /* ListPhotographersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPhotographersTableViewController.swift; sourceTree = "<group>"; };
-		F511E64A2229932B004923C3 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
-		F511E64B2229932B004923C3 /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
-		F531D59B2211D2D000AB5D8D /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Stack.swift; path = "CapStone Project (Photographer)/Model/Stack.swift"; sourceTree = SOURCE_ROOT; };
 		F531D59D2211D48100AB5D8D /* Bio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bio.swift; sourceTree = "<group>"; };
-		F531D59F2211D84D00AB5D8D /* BioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioController.swift; sourceTree = "<group>"; };
 		F531D5A12213325A00AB5D8D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F58602252215BE0A007F7F3C /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		F5FE67612208A3B100E42133 /* CapStone Project (Photographer).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CapStone Project (Photographer).app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,7 +44,6 @@
 		F5FE676B2208A3B500E42133 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F5FE676E2208A3B500E42133 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F5FE67702208A3B500E42133 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F5FE67772208A64300E42133 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,15 +73,6 @@
 				5C4B668147EF9740860D0316 /* Pods_CapStone_Project__Photographer_.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		F511E64E2229934D004923C3 /* Post */ = {
-			isa = PBXGroup;
-			children = (
-				F511E64A2229932B004923C3 /* PostTableViewCell.swift */,
-				F511E64B2229932B004923C3 /* PostTableViewCell.xib */,
-			);
-			path = Post;
 			sourceTree = "<group>";
 		};
 		F5FE67582208A3B100E42133 = {
@@ -129,11 +110,9 @@
 		F5FE67792208A65200E42133 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F531D59B2211D2D000AB5D8D /* Stack.swift */,
 				F531D59D2211D48100AB5D8D /* Bio.swift */,
 				F58602252215BE0A007F7F3C /* Image.swift */,
 				F5032E0F221F05AE00C34915 /* DateFormatter.swift */,
-				F5FE67762208A64300E42133 /* Model.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -147,8 +126,6 @@
 				F50ADB17220C8AF3009B57F0 /* ListPhotographersTableViewController.swift */,
 				F5032E0D221C756500C34915 /* CellLIstPhotographersTableViewCell.swift */,
 				F509BB88220E1F7D008D5F46 /* BioViewController.swift */,
-				F531D59F2211D84D00AB5D8D /* BioController.swift */,
-				F511E64E2229934D004923C3 /* Post */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -224,7 +201,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5FE676F2208A3B500E42133 /* LaunchScreen.storyboard in Resources */,
-				F511E64D2229932B004923C3 /* PostTableViewCell.xib in Resources */,
 				F531D5A22213325A00AB5D8D /* GoogleService-Info.plist in Resources */,
 				F5FE676C2208A3B500E42133 /* Assets.xcassets in Resources */,
 				F5FE676A2208A3B100E42133 /* Main.storyboard in Resources */,
@@ -324,14 +300,10 @@
 				F5032E0E221C756500C34915 /* CellLIstPhotographersTableViewCell.swift in Sources */,
 				F509BB89220E1F7D008D5F46 /* BioViewController.swift in Sources */,
 				F50ADB14220C8A6D009B57F0 /* PhotographySignInViewController.swift in Sources */,
-				F531D5A02211D84D00AB5D8D /* BioController.swift in Sources */,
 				F5032E10221F05AE00C34915 /* DateFormatter.swift in Sources */,
 				F5FE67652208A3B100E42133 /* AppDelegate.swift in Sources */,
 				F50ADB18220C8AF3009B57F0 /* ListPhotographersTableViewController.swift in Sources */,
-				F511E64C2229932B004923C3 /* PostTableViewCell.swift in Sources */,
-				F531D59C2211D2D000AB5D8D /* Stack.swift in Sources */,
 				F50ADB16220C8ABD009B57F0 /* CreateBioTableViewController.swift in Sources */,
-				F5FE67782208A64300E42133 /* Model.xcdatamodeld in Sources */,
 				F531D59E2211D48100AB5D8D /* Bio.swift in Sources */,
 				F58602262215BE0A007F7F3C /* Image.swift in Sources */,
 				F50ADB122209F6F6009B57F0 /* WelcomeScreenViewController.swift in Sources */,
@@ -534,19 +506,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		F5FE67762208A64300E42133 /* Model.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				F5FE67772208A64300E42133 /* Model.xcdatamodel */,
-			);
-			currentVersion = F5FE67772208A64300E42133 /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = F5FE67592208A3B100E42133 /* Project object */;
 }
