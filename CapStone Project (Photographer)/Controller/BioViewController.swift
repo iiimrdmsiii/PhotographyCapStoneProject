@@ -148,48 +148,49 @@ class BioViewController: UIViewController {
     
     // Retrieve data from the firestore and upload onto the iphone screen
     func updateUIWithCurrentUserData() {
-
-        if let bio  = bioRetrive {
-            nameTextField.text = bio.name
-            emailTextField.text = bio.email
-            phoneNumberTextField.text = bio.number
-            currentStateTextField.text = bio.currentState
-            websiteTextField.text = bio.webSite
-            aboutTextView.text = bio.aboutYou
-            socialMediaTextField.text = bio.instagram
-            
-            if let url = URL(string: bio.image) {
-                
-                self.updateProfileImage(from: url)
-                
-            }
-        }
-    }
-        
-//        // Queries FireStore to get ALL of the users
-//        self.db.collection("users").getDocuments { (snapshot, error) in
-//            guard let documents = snapshot?.documents else { return }
-//            // Loops through each user to find one document for each user
-//            for document in documents {
-//                // Access to the user
 //
+//        if let bio  = bioRetrive {
+//            nameTextField.text = bio.name
+//            emailTextField.text = bio.email
+//            phoneNumberTextField.text = bio.number
+//            currentStateTextField.text = bio.currentState
+//            websiteTextField.text = bio.webSite
+//            aboutTextView.text = bio.aboutYou
+//            socialMediaTextField.text = bio.instagram
 //
-//                document.get("user")
-//                guard let imageURL = bioRetrive.image as? String else {return}
-//                self.nameTextField.text =  document.get("name") as? String
-//                self.emailTextField.text =  document.get("email") as? String
-//                self.phoneNumberTextField.text =  document.get("phoneNumber") as? String
-//                self.currentStateTextField.text =  document.get("currentState") as? String
-//                self.websiteTextField.text =  document.get("website") as? String
-//                self.aboutTextView.text =  document.get("aboutYou") as? String
-//                self.socialMediaTextField.text =  document.get("socialMedia") as? String
-//                if let url = URL(string: imageURL) {
+//            if let url = URL(string: bio.image) {
 //
 //                self.updateProfileImage(from: url)
 //
-//                }
 //            }
 //        }
 //    }
+    
+        // Queries FireStore to get ALL of the users
+        self.db.collection("users").getDocuments { (snapshot, error) in
+            guard let documents = snapshot?.documents else { return }
+            // Loops through each user to find one document for each user
+            for document in documents {
+                // Access to the user
+
+
+                document.get("user")
+                guard let imageURL = document.get("imageURL") as? String else {return}
+                self.nameTextField.text =  document.get("name") as? String
+                self.emailTextField.text =  document.get("email") as? String
+                self.phoneNumberTextField.text =  document.get("phoneNumber") as? String
+                self.currentStateTextField.text =  document.get("currentState") as? String
+                self.websiteTextField.text =  document.get("website") as? String
+                self.aboutTextView.text =  document.get("aboutYou") as? String
+                self.socialMediaTextField.text =  document.get("socialMedia") as? String
+                if let url = URL(string: imageURL) {
+
+                self.updateProfileImage(from: url)
+
+                }
+            }
+        }
+    }
 }
+
 
