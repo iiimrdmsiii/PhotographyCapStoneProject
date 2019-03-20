@@ -151,6 +151,8 @@ class CreateBioTableViewController: UITableViewController, UIImagePickerControll
         bioViewController.localBioWebsite = websiteTextField.text!
         bioViewController.localBioAboutYou = aboutYouTextView.text!
         
+        bioViewController.bioRetrive = bio
+        
         print("bio value we're passing: \(nameTextField.text)")
         
     }

@@ -15,8 +15,11 @@ class PhotographySignInViewController: UIViewController {
     //*********************************************************
     // MARK: - Properties
     //*********************************************************
-    
+    var bio = [Bio]()
+    var db: Firestore = Firestore.firestore()
     var isSignIn: Bool = true
+    
+    
     
     
     //*********************************************************
@@ -47,6 +50,35 @@ class PhotographySignInViewController: UIViewController {
             
             print("It worked!!!")
         }
+        
+        
+        
+    }
+    
+    func updateUserFromCloudStore() {
+        //  Query FireStore to get the snapshot of all of the users
+        self.db.collection("users").getDocuments { (snapshot, error) in
+            // Convert the snapshot to documents
+            guard let documents = snapshot?.documents else {return}
+            var users: [Bio] = []
+            // Loop through the documents
+            for document in documents {
+                guard let name = document.get("name") as? String,
+                    let email = document.get("email") as? String,
+                    let number = document.get("phoneNumber") as? String,
+                    let currentState = document.get("currentState") as? String,
+                    let webSite = document.get("website") as? String,
+                    let aboutYou = document.get("aboutYou") as? String,
+                    let image = document.get("imageURL") as? String,
+                    let instagram = document.get("socialMedia") as? String else { return }
+                // Convert a single document into a bio object
+                if let convertDocumentBio = Bio(name: name, number: number, email: email
+                    , currentState: currentState, instagram: instagram, webSite: webSite, aboutYou: aboutYou, password: "", image: image) {
+                    // Store each bio into a new array
+                    users.append(convertDocumentBio)
+                }
+            }
+        }
     }
     
     //*********************************************************
@@ -55,11 +87,15 @@ class PhotographySignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         self.loginButton.layer.cornerRadius = 15
         self.dontHaveAnAccountButton.layer.cornerRadius = 10
         
         loginButton.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+        
+        
         
     }
     
@@ -93,6 +129,7 @@ class PhotographySignInViewController: UIViewController {
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if error == nil && user != nil {
                 self.performSegue(withIdentifier: "bioFromLoginSegue", sender: self)
+                
             } else {
                 print("Error Logging in: \(error!.localizedDescription)")
                 
@@ -108,4 +145,14 @@ class PhotographySignInViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
         
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        guard let bioVC = segue.destination as? BioViewController else { return }
+//
+//        if segue.identifier == "bioFromLoginSegue", let bioViewController = segue.destination as? BioViewController {
+//
+//            bioVC.bioRetrive = BioViewController
+//
+//        }
+//    }
 }
