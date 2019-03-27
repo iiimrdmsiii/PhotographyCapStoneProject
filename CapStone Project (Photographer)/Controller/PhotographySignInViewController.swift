@@ -145,14 +145,5 @@ class PhotographySignInViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
         
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let bioVC = segue.destination as? BioViewController else { return }
-//
-//        if segue.identifier == "bioFromLoginSegue", let bioViewController = segue.destination as? BioViewController {
-//
-//            bioVC.bioRetrive = BioViewController
-//
-//        }
-//    }
+
 }
